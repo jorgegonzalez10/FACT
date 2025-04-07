@@ -10,9 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_07_205519) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_07_214413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "rfc"
+    t.string "fiscal_name"
+    t.string "fiscal_number"
+    t.string "certifcate"
+    t.string "cfdi"
+    t.integer "postal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_clients_on_company_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "rfc"
+    t.string "name"
+    t.string "fiscal_number"
+    t.integer "postal"
+    t.string "certifcate"
+    t.string "location"
+    t.date "time"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "detail_invoices", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.string "product_number"
+    t.integer "amount"
+    t.string "unit"
+    t.text "description"
+    t.float "unit_value"
+    t.float "total_value"
+    t.float "taxes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_detail_invoices_on_invoice_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "client_id", null: false
+    t.string "payment_type"
+    t.string "payment_method"
+    t.float "sub_total"
+    t.float "taxes"
+    t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_invoices_on_client_id"
+    t.index ["company_id"], name: "index_invoices_on_company_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_07_205519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "companies"
+  add_foreign_key "companies", "users"
+  add_foreign_key "detail_invoices", "invoices"
+  add_foreign_key "invoices", "clients"
+  add_foreign_key "invoices", "companies"
 end
