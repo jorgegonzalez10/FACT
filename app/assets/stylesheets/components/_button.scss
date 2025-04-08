@@ -1,0 +1,22 @@
+
+.btn-warning {
+  background-color: #1679AB;
+  border-color: #1679AB;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 17%;
+}
+
+.btn-warning:hover {
+  background-color: darken(#1679AB, 10%);
+  transform: scale(1.05);
+}
+
+.btn-warning:focus {
+  box-shadow: 0 0 0 0.25rem rgba(22, 121, 171, 0.5);
+}
+
+.btn-warning .btn-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}

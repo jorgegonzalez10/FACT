@@ -1,2 +1,62 @@
-<h1>Companies#edit</h1>
-<p>Find me in app/views/companies/edit.html.erb</p>
+<div class="container mt-5 p-5 bg-white shadow rounded-4 border border-2" style="border-color: #1679AB;">
+<%= simple_form_for @company do |f| %>
+   <h2 class="mb-4 text-warning fw-bold">Datos de la Empresa</h2>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= f.input :name, label: "Nombre o razón social", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :fiscal_number, label: "Número fiscal (RFC)", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= f.input :postal, label: "Código fiscal", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :certificate, label: "Código CFDI", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :time, as: :date, start_year: Date.today.year, label:"Fecha", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h4 class="mb-3 text-secondary fw-semibold">Domicilio Fiscal</h4>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= f.input :street, label: "Calle", input_html: { class: 'form-control form-control-lg', name: "company[street]" } %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :number, label: "Número", input_html: { class: 'form-control form-control-lg', name: "company[number]" } %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :neighborhood, label: "Colonia", input_html: { class: 'form-control form-control-lg', name: "company[neighborhood]" } %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= f.input :city, label: "Ciudad", input_html: { class: 'form-control form-control-lg', name: "company[city]" } %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :state, label: "Estado", input_html: { class: 'form-control form-control-lg', name: "company[state]" } %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :zip_code, label: "Código Postal", input_html: { class: 'form-control form-control-lg', name: "company[zip_code]" } %>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <%= f.input :photo, as: :file, label: "Logotipo", input_html: { class: 'form-control form-control-lg' } %>
+    </div>
+    <div class="d-flex justify-content-between">
+  <%= f.submit "Actualizar Empresa", class: "btn btn-warning w-50 rounded-pill py-2 fs-5" %>
+  <%= link_to raw('<i class="bi bi-arrow-return-left"></i> Volver a la lista'), companies_path, class: 'btn btn-outline-secondary w-45 rounded-pill py-2 fs-5' %>
+  </div>
+<% end %>
+</div>

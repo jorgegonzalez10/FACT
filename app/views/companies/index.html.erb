@@ -1,7 +1,11 @@
-<div class="container mt-5" id="companiesCard">
+
+<div class="container mt-5 ">
+  <%= link_to '+ Agregar compañía', new_company_path, class: 'btn btn-warning rounded-pill px-4 py-2 d-flex align-items-center' %>
+</div>
+<div class="container mt-4" id="companiesCard">
   <ul class="list-group">
     <% @companies.each do |company| %>
-      <li class="list-group-item p-4 mb-3 shadow-sm company-card d-flex align-items-center rounded-4">
+      <li class="list-group-item p-4 mb-2 shadow-sm company-card d-flex align-items-center rounded-4">
         <% if company.photo.attached? %>
           <%= image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
         <% end %>
@@ -13,7 +17,9 @@
             <strong>CP:</strong> <%= company.postal %>
           </p>
         </div>
-
+        <%= link_to 'Ver detalles',
+                    company_path(company),
+                    class: 'btn btn-outline-warning btn-sm ms-3' %>
         <%= link_to 'Remove',
                     company_path(company),
                     class: 'btn btn-outline-danger btn-sm ms-3',
@@ -21,4 +27,5 @@
       </li>
     <% end %>
   </ul>
+
 </div>

@@ -1,2 +1,49 @@
-<h1>Companies#show</h1>
-<p>Find me in app/views/companies/show.html.erb</p>
+<div class="container my-5">
+  <div class="card shadow border-0 rounded-4" id="showcard">
+    <div class="row g-0">
+
+      <div class="col-md-4 bg-light d-flex align-items-center justify-content-center p-4 rounded-start-4">
+        <% if @company.photo.attached? %>
+          <%= image_tag url_for(@company.photo), class: "img-fluid rounded", style: "max-height: 200px;" %>
+        <% else %>
+          <img src="https://via.placeholder.com/200x200?text=Logo" class="img-fluid rounded" alt="Logo">
+        <% end %>
+      </div>
+
+
+      <div class="col-md-8 p-4">
+       <div class="position-absolute top-0 end-0 p-2">
+  <%= link_to raw('<i class="bi bi-x-lg" style="font-size: 1rem;"></i>'), companies_path, class: "btn btn-dark rounded-circle p-1" %>
+</div>
+
+        <h2 class="fw-bold mb-3"><%= @company.name %></h2>
+
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">RFC:</th>
+              <td><%= @company.fiscal_number %></td>
+            </tr>
+            <tr>
+              <th scope="row">Domicilio fiscal:</th>
+              <td><%= @company.location %></td>
+            </tr>
+             <tr>
+              <th scope="row">Código CFDI:</th>
+              <td><%= @company.certificate %></td>
+            </tr>
+             <tr>
+              <th scope="row">Código postal:</th>
+              <td><%= @company.postal %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end mt-4">
+          <%= link_to 'Editar', edit_company_path(@company), class: "btn btn-outline-warning me-2 rounded-3" %>
+          <%= link_to 'Eliminar', company_path(@company), class: "btn btn-outline-danger rounded-3", data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro de eliminar esta empresa?" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
