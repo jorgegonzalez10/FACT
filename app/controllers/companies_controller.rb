@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:id])
   end
 
   def new
@@ -21,9 +22,22 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @company = Company.find(params[:id])
+    if @company.location.present?
+      parts = @company.location.split(',').map(&:strip)
+      @company.street = parts[0]
+      @company.number = parts[1]
+      @company.neighborhood = parts[2]
+      @company.city = parts[3]
+      @company.state = parts[4]
+      @company.zip_code = parts[5]
+    end
   end
 
   def update
+    @company = Company.find(params[:id])
+    @company.update(company_params)
+    redirect_to company_path(@company)
   end
 
   def destroy
@@ -35,6 +49,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :fiscal_number, :postal, :certificate, :location, :time, :photo)
+    params.require(:company).permit(:name, :fiscal_number, :postal, :certificate, :location, :time, :photo,  :street, :number, :neighborhood, :city, :state, :zip_code)
   end
 end
