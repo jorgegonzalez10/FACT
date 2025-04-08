@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :companies
   resources :clients
-  resouces :invoices do
+  resources :invoices do
     resources :detail_invoices, only: [:new, :create, :edit, :update, :destroy]
   end
   # Defines the root path route ("/")

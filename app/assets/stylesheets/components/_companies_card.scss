@@ -1,0 +1,25 @@
+#companiesCard {
+  .company-card {
+    background-color: #ffffff;
+    transition: box-shadow 0.2s ease;
+    border: 1px solid #FFB1B1;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h5 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .btn-outline-danger {
+      transition: background-color 0.2s ease, color 0.2s ease;
+
+      &:hover {
+        background-color: #dc3545;
+        color: white;
+      }
+    }
+  }
+}
