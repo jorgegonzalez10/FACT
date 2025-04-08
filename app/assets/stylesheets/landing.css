@@ -522,15 +522,16 @@ section {
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 150px;
   flex-grow: 1;
   justify-content: flex-start;
 }
 
 .footer-column h4 {
-  font-size: 16px;
+  font-size: 30px;
   margin-bottom: 15px;
   color: #FFCBCB;
+  font-weight: 700;
 }
 
 .footer-column ul {
