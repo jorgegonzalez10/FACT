@@ -1,2 +1,24 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
+<div class="container mt-5" id="companiesCard">
+  <ul class="list-group">
+    <% @companies.each do |company| %>
+      <li class="list-group-item p-4 mb-3 shadow-sm company-card d-flex align-items-center rounded-4">
+        <% if company.photo.attached? %>
+          <%= image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
+        <% end %>
+
+        <div class="flex-grow-1">
+          <h3 class="mb-1"><%= company.name %></h3>
+          <p class="mb-0 text-muted">
+            <strong>RFC:</strong> <%= company.fiscal_number %> <br>
+            <strong>CP:</strong> <%= company.postal %>
+          </p>
+        </div>
+
+        <%= link_to 'Remove',
+                    company_path(company),
+                    class: 'btn btn-outline-danger btn-sm ms-3',
+                    data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+      </li>
+    <% end %>
+  </ul>
+</div>
