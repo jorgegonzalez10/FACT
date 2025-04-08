@@ -139,26 +139,87 @@
 <section class="faq-section">
   <h2 class="faq-title">Preguntas frecuentes</h2>
   <div class="faq-container">
+
     <div class="faq-item">
-      <button class="faq-question">¿Cómo empiezo a usar la plataforma?</button>
+      <button class="faq-question">
+        ¿Cómo empiezo a usar la plataforma?
+        <i data-feather="chevron-down" class="faq-icon"></i>
+      </button>
       <div class="faq-answer">
-        <p>Solo tenés que crear una cuenta gratuita y comenzar a explorar las herramientas disponibles.</p>
+        <div class="faq-text">
+          <p>Solo tenés que crear una cuenta gratuita y comenzar a explorar las herramientas disponibles.</p>
+        </div>
       </div>
     </div>
+
     <div class="faq-item">
-      <button class="faq-question">¿Puedo emitir facturas sin estar registrado en SAP?</button>
+      <button class="faq-question">
+        ¿Puedo emitir facturas sin estar registrado en SAP?
+        <i data-feather="chevron-down" class="faq-icon"></i>
+      </button>
       <div class="faq-answer">
-        <p>No, para emitir facturas es necesario tener un timbre y estar dado de alta en SAP como responsable inscripto o monotributista.</p>
+        <div class="faq-text">
+          <p>No, para emitir facturas es necesario tener un timbre y estar dado de alta en SAP como responsable inscripto o monotributista.</p>
+        </div>
       </div>
     </div>
+
     <div class="faq-item">
-      <button class="faq-question">¿Qué incluye el plan gratuito?</button>
+      <button class="faq-question">
+        ¿Qué incluye el plan gratuito?
+        <i data-feather="chevron-down" class="faq-icon"></i>
+      </button>
       <div class="faq-answer">
-        <p>El plan gratuito te permite emitir hasta 5 facturas mensuales, con acceso básico al panel y soporte por mail.</p>
+        <div class="faq-text">
+          <p>El plan gratuito te permite emitir hasta 5 facturas mensuales, con acceso básico al panel y soporte por mail.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-innovador">
+  <div class="footer-wrapper">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Logo" class="footer-logo">
+      <p>Transformamos la facturación en una experiencia simple, estética y poderosa.</p>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Precios</a></li>
+          <li><a href="#">Preguntas Frecuentes</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Seguinos</h4>
+        <div class="footer-social-icons">
+          <a href="#"><i data-feather="instagram"></i></a>
+          <a href="#"><i data-feather="twitter"></i></a>
+          <a href="#"><i data-feather="linkedin"></i></a>
+        </div>
       </div>
     </div>
   </div>
-</section>
+
+  <div class="footer-bottom">
+    <p>&copy; <%= Time.current.year %> Facturitas. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
 
 <script>
   feather.replace();

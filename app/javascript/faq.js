@@ -5,4 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.classList.toggle('active');
     });
   });
+
+  feather.replace();
 });
+
