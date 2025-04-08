@@ -13,6 +13,19 @@
   align-items: center;
 }
 
+section {
+  padding: 80px 0;
+}
+
+.btn-register {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-register:hover {
+  background-color: #0b1a36;
+  transform: scale(1.03);
+}
+
 .welcome-section {
   max-width: 600px;
   padding-right: 40px;
@@ -345,6 +358,7 @@
 
 /* ESTILO DEL EQUIPO */
 
+
 .team-grid {
   display: flex;
   flex-wrap: wrap;
@@ -400,18 +414,14 @@
   margin-bottom: 40px;
 }
 
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
-
 .faq-item {
   margin-bottom: 20px;
   border-radius: 8px;
   background-color: #102C57;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  margin: 0 auto 20px auto; /* centrado + margen inferior */
+  max-width: 800px;
 }
 
 .faq-question {
@@ -462,6 +472,13 @@
 }
 
 /* FOOTER */
+
+.container-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
 .footer-innovador {
   background-color: #0D1E40;
   background-image:
@@ -470,7 +487,7 @@
   background-size: auto, 40px 40px;
   background-repeat: no-repeat, repeat;
   color: #FFCBCB;
-  padding: 80px 60px 30px; /* igual que .hero */
+  padding: 80px 60px 30px;
   box-sizing: border-box;
 }
 
@@ -481,6 +498,9 @@
   flex-wrap: wrap;
   gap: 60px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
   box-sizing: border-box;
 }
 

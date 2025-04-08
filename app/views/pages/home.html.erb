@@ -14,10 +14,9 @@
 </div>
 
 <!-- sección segundo scroll -->
-
 <section class="features-section">
   <div class="features-container">
-    <h2 class="section-title">Simplificá tu facturación sin ingresar a SAT</h2>
+    <h2 class="features-title">Simplificá tu facturación sin ingresar a SAT</h2>
     <p class="features-subtitle">Nuestra plataforma te permite generar facturas en SAT de forma rápida, segura y desde cualquier lugar</p>
 
     <div class="features-grid">
@@ -41,18 +40,17 @@
 
       <div class="feature-card">
         <i data-feather="file-text"></i>
-        <h3>Envialas al instante</h3>
-        <p>Con un simple click, reenviasela a tus clientes.</p>
+        <h3>Enviálas al instante</h3>
+        <p>Con un simple click, reenvíasela a tus clientes.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- sección planes -->
-
 <section class="pricing-section">
   <div class="pricing-container">
-    <h2 class="pricing-title">Mejora tus ventas</h2>
+    <h2 class="pricing-title">Mejorá tus ventas</h2>
     <p class="pricing-subtitle">Elegí el plan que mejor se adapta a vos</p>
 
     <div class="pricing-grid">
@@ -93,7 +91,6 @@
 </section>
 
 <!-- sección sobre nosotros -->
-
 <section class="about-section">
   <div class="about-container">
     <h2 class="about-title">¿Quiénes somos?</h2>
@@ -104,38 +101,35 @@
     <div class="about-grid">
       <div class="about-card">
         <h3>🚀 Nuestra misión</h3>
-        <p>
-          Ayudar a miles de emprendedores a ahorrar tiempo y enfocarse en lo que realmente importa: hacer crecer su negocio.
-        </p>
+        <p>Ayudar a miles de emprendedores a ahorrar tiempo y enfocarse en lo que realmente importa: hacer crecer su negocio.</p>
       </div>
       <div class="about-card">
         <h3>💡 Nuestra visión</h3>
-        <p>
-          Ser la solución de facturación preferida por quienes valoran la eficiencia, la estética y la experiencia de usuario.
-        </p>
+        <p>Ser la solución de facturación preferida por quienes valoran la eficiencia, la estética y la experiencia de usuario.</p>
       </div>
     </div>
 
-<div class="team-grid">
-  <div class="team-member">
-    <%= image_tag("RAT.jpeg", alt: "Foto de Olivia Calderon") %>
-    <p class="team-name">Olivia Calderon</p>
-    <p class="team-role">Co-Founder</p>
+    <div class="team-grid">
+      <div class="team-member">
+        <%= image_tag("RAT.jpeg", alt: "Foto de Olivia Calderon") %>
+        <p class="team-name">Olivia Calderon</p>
+        <p class="team-role">Co-Founder</p>
+      </div>
+      <div class="team-member">
+        <%= image_tag("RAT.jpeg", alt: "Foto de Jorge Gonzalez") %>
+        <p class="team-name">Jorge Gonzalez</p>
+        <p class="team-role">Co-Founder</p>
+      </div>
+      <div class="team-member">
+        <%= image_tag("RAT.jpeg", alt: "Foto de Rodrigo Alvarez de Toledo") %>
+        <p class="team-name">Rodrigo Alvarez de Toledo</p>
+        <p class="team-role">Co-Founder</p>
+      </div>
+    </div>
   </div>
-  <div class="team-member">
-    <%= image_tag("RAT.jpeg", alt: "Foto de Jorge Gonzalez") %>
-    <p class="team-name">Jorge Gonzalez</p>
-    <p class="team-role">Co-Founder</p>
-  </div>
-  <div class="team-member">
-    <%= image_tag("RAT.jpeg", alt: "Foto de Rodrigo Alvarez de Toledo") %>
-    <p class="team-name">Rodrigo Alvarez de Toledo</p>
-    <p class="team-role">Co-Founder</p>
-  </div>
-</div>
+</section>
 
 <!-- sección FAQ -->
-
 <section class="faq-section">
   <h2 class="faq-title">Preguntas frecuentes</h2>
   <div class="faq-container">
@@ -179,11 +173,11 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer class="footer-innovador">
   <div class="footer-wrapper">
     <div class="footer-brand">
-      <img src="logo.png" alt="Logo" class="footer-logo">
+      <%= image_tag("RAT.jpeg", class: "footer-logo", alt: "Logo") %>
       <p>Transformamos la facturación en una experiencia simple, estética y poderosa.</p>
     </div>
 
@@ -219,7 +213,6 @@
     <p>&copy; <%= Time.current.year %> Facturitas. Todos los derechos reservados.</p>
   </div>
 </footer>
-
 
 <script>
   feather.replace();
