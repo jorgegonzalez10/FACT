@@ -6,12 +6,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Estilos -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "landing", media: "all" %>
+
+    <!-- Feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- JavaScript (Importmap incluye todos los imports como faq.js) -->
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>

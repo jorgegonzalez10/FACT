@@ -1,2 +1,165 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- sección primer scroll -->
+<div class="hero">
+  <div class="welcome-section">
+    <h1>Facturá en SAT en pocos pasos</h1>
+    <p>
+      Facturar en SAT suele ser una de las tareas más tediosas y repetitivas para cualquier profesional. Con nuestra plataforma, podés automatizarlo y olvidarte del estrés.
+    </p>
+    <%= link_to "Registrate", "#", class: "btn-primary" %>
+  </div>
+
+  <div class="hero-image">
+    <%= image_tag("home-fact.png", alt: "FACT") %>
+  </div>
+</div>
+
+<!-- sección segundo scroll -->
+
+<section class="features-section">
+  <div class="features-container">
+    <h2 class="section-title">Simplificá tu facturación sin ingresar a SAT</h2>
+    <p class="features-subtitle">Nuestra plataforma te permite generar facturas en SAT de forma rápida, segura y desde cualquier lugar</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <i data-feather="smartphone"></i>
+        <h3>Desde donde quieras</h3>
+        <p>Creá facturas desde tu compu o celular sin entrar a SAT.</p>
+      </div>
+
+      <div class="feature-card">
+        <i data-feather="refresh-ccw"></i>
+        <h3>Incluso si SAT está caído</h3>
+        <p>Tu factura queda en cola y se sube apenas SAT se restablece.</p>
+      </div>
+
+      <div class="feature-card">
+        <i data-feather="check-circle"></i>
+        <h3>Con estándares SAT</h3>
+        <p>Todo lo que generás cumple con los requerimientos oficiales.</p>
+      </div>
+
+      <div class="feature-card">
+        <i data-feather="file-text"></i>
+        <h3>Envialas al instante</h3>
+        <p>Con un simple click, reenviasela a tus clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- sección planes -->
+
+<section class="pricing-section">
+  <div class="pricing-container">
+    <h2 class="pricing-title">Mejora tus ventas</h2>
+    <p class="pricing-subtitle">Elegí el plan que mejor se adapta a vos</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Gratuito</h3>
+        <p class="price">$0</p>
+        <ul>
+          <li>Hasta 5 facturas mensuales</li>
+          <li>Soporte por email</li>
+          <li>Generación SAT manual</li>
+        </ul>
+        <a href="#" class="btn-primary">Comenzar</a>
+      </div>
+
+      <div class="pricing-card recomendado">
+        <h3>Pro</h3>
+        <p class="price">$1.500</p>
+        <ul>
+          <li>Facturación ilimitada</li>
+          <li>Automatización SAT</li>
+          <li>Soporte en vivo</li>
+        </ul>
+        <a href="#" class="btn-primary">Elegir Pro</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="price">$2.500</p>
+        <ul>
+          <li>Todo lo de Pro</li>
+          <li>Panel de equipo</li>
+          <li>Soporte personalizado</li>
+        </ul>
+        <a href="#" class="btn-primary">Ir a Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- sección sobre nosotros -->
+
+<section class="about-section">
+  <div class="about-container">
+    <h2 class="about-title">¿Quiénes somos?</h2>
+    <p class="about-description">
+      Somos un equipo apasionado por la tecnología y la simplicidad. Creamos herramientas pensadas para emprendedores y negocios que buscan profesionalizar su facturación sin complicaciones.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🚀 Nuestra misión</h3>
+        <p>
+          Ayudar a miles de emprendedores a ahorrar tiempo y enfocarse en lo que realmente importa: hacer crecer su negocio.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>💡 Nuestra visión</h3>
+        <p>
+          Ser la solución de facturación preferida por quienes valoran la eficiencia, la estética y la experiencia de usuario.
+        </p>
+      </div>
+    </div>
+
+<div class="team-grid">
+  <div class="team-member">
+    <%= image_tag("RAT.jpeg", alt: "Foto de Olivia Calderon") %>
+    <p class="team-name">Olivia Calderon</p>
+    <p class="team-role">Co-Founder</p>
+  </div>
+  <div class="team-member">
+    <%= image_tag("RAT.jpeg", alt: "Foto de Jorge Gonzalez") %>
+    <p class="team-name">Jorge Gonzalez</p>
+    <p class="team-role">Co-Founder</p>
+  </div>
+  <div class="team-member">
+    <%= image_tag("RAT.jpeg", alt: "Foto de Rodrigo Alvarez de Toledo") %>
+    <p class="team-name">Rodrigo Alvarez de Toledo</p>
+    <p class="team-role">Co-Founder</p>
+  </div>
+</div>
+
+<!-- sección FAQ -->
+
+<section class="faq-section">
+  <h2 class="faq-title">Preguntas frecuentes</h2>
+  <div class="faq-container">
+    <div class="faq-item">
+      <button class="faq-question">¿Cómo empiezo a usar la plataforma?</button>
+      <div class="faq-answer">
+        <p>Solo tenés que crear una cuenta gratuita y comenzar a explorar las herramientas disponibles.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Puedo emitir facturas sin estar registrado en SAP?</button>
+      <div class="faq-answer">
+        <p>No, para emitir facturas es necesario tener un timbre y estar dado de alta en SAP como responsable inscripto o monotributista.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">¿Qué incluye el plan gratuito?</button>
+      <div class="faq-answer">
+        <p>El plan gratuito te permite emitir hasta 5 facturas mensuales, con acceso básico al panel y soporte por mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  feather.replace();
+</script>
