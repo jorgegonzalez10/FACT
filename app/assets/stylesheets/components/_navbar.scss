@@ -4,6 +4,9 @@
   background-color: rgba(16, 44, 87, 0.85);
   backdrop-filter: blur(6px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -68,4 +71,11 @@
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+.navbar-logo {
+  height: 80px !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
 }
