@@ -1,0 +1,41 @@
+<div class="container-fluid py-5" style="background-color: #1f3b64; min-height: 100vh;">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="bg-white shadow-lg rounded-4 p-5 mt-4" style="width: 100%; max-width: 700px; border: 1px solid #1679AB;">
+
+      <h2 class="text-center text-primary fw-bold mb-4">
+        <i data-feather="user" class="me-2"></i>Editar Mi Perfil
+      </h2>
+
+      <%= simple_form_for(@user, url: profile_path, method: :patch, html: { multipart: true }) do |f| %>
+
+        <!-- Foto de perfil -->
+        <div class="text-center mb-4">
+          <% if @user.photo.attached? %>
+            <%= image_tag @user.photo.variant(resize_to_limit: [150, 150]), class: "rounded-circle border shadow-sm", style: "object-fit: cover;" %>
+          <% else %>
+            <div class="text-muted small">No hay foto de perfil subida</div>
+          <% end %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.input :photo, as: :file, label: "Actualizar foto de perfil", input_html: { class: 'form-control form-control-lg' } %>
+        </div>
+
+        <!-- Nombre y correo -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <%= f.input :name, label: "Nombre", input_html: { class: 'form-control form-control-lg' } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :email, label: "Correo electrónico", input_html: { class: 'form-control form-control-lg' } %>
+          </div>
+        </div>
+
+        <!-- Botón guardar -->
+        <div class="d-grid">
+          <%= f.submit 'Guardar cambios', class: 'btn btn-primary rounded-pill py-2 fs-5' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
