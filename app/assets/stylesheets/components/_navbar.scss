@@ -74,8 +74,25 @@
 }
 
 .navbar-logo {
-  height: 80px !important;
+  height: 50px !important;
   width: auto !important;
   object-fit: contain;
   display: block;
+  margin-left: 16px;
+}
+
+.navbar-lewagon .dropdown-menu {
+  background-color: #1679AB;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.navbar-lewagon .dropdown-menu a.dropdown-item {
+  color: white !important;
+}
+
+.navbar-lewagon .dropdown-menu a.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFCBCB !important;
+  border-radius: 6px;
 }
