@@ -6,7 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "landing", media: "all" %>
+
+    <!-- Feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- JavaScript (Importmap incluye todos los imports como faq.js) -->
     <%= javascript_importmap_tags %>
 
     <!-- Bootstrap -->
@@ -15,9 +23,14 @@
   </head>
 
   <body>
+
   <!-- Navbar -->
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
+
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+
 
   <!-- Sidebar condicionada al sign up -->
   <% if user_signed_in? %>
