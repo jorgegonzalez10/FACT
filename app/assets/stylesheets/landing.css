@@ -1,4 +1,8 @@
 /* PRINCIPAL HOME */
+.body {
+  background-color: #102C57;
+}
+
 .hero {
   background-color: #0D1E40;
   background-image:
@@ -473,11 +477,11 @@ section {
 
 /* FOOTER */
 
-.container-fluid {
+/* .container-fluid {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
-}
+} */
 
 .footer-innovador {
   background-color: #0D1E40;
