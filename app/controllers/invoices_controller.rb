@@ -8,9 +8,15 @@ class InvoicesController < ApplicationController
   end
 
   def edit
+    @invoice = Invoice.find(params[:id])
   end
 
   def update
+    if @invoice.update(invoice_params)
+      redirect_to invoice_path(@invoice), notice: 'FacturaCantidad actualizada.'
+    else
+      redirect_to invoice_path(@invoice), alert: 'Error al actualizar.'
+    end
   end
 
   def destroy
@@ -28,7 +34,6 @@ class InvoicesController < ApplicationController
     @clients = Client.all
   end
 
-
   def create
     @invoice = Invoice.new(invoice_params)
 
@@ -40,13 +45,12 @@ class InvoicesController < ApplicationController
     end
   end
 
-
   private
 
-    def invoice_params
-      params.require(:invoice).permit(
-        :company_id, :client_id, :payment_type, :payment_method, :sub_total, :taxes, :total,
-        detail_invoices_attributes: [:product_number, :amount, :unit_value, :description]
-      )
-    end
+  def invoice_params
+    params.require(:invoice).permit(
+      :company_id, :client_id, :payment_type, :payment_method, :sub_total, :taxes, :total,
+      detail_invoices_attributes: [:product_number, :amount, :unit_value, :description]
+    )
+  end
 end

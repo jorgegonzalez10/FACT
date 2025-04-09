@@ -1,15 +1,15 @@
 <div class="container" id="invoice-template">
-  <!-- Botones de acción -->
+
   <div class="d-flex justify-content-between mb-3">
-    <%= link_to "← Volver a Facturas", invoices_path, class: "btn btn-outline-secondary" %>
+    <%= link_to "← Volver a Facturas", invoices_path, class: "btn btn-outline-secondary mt-3" %>
     <div>
       <%= button_tag "Generar Factura", type: "button", class: "btn btn-primary me-2", id: "generate-template" %>
-      <%= link_to "Editar Factura", edit_invoice_path(@invoice), class: "btn btn-outline-info" %>
+
     </div>
   </div>
 
   <div class="invoice-container bg-white p-4 shadow-sm">
-    <!-- Encabezado -->
+
     <div class="row header-section align-items-center py-3 mb-4 border-bottom">
       <div class="col-md-6">
         <% if @invoice.company.photo.attached? %>
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <!-- Datos del cliente -->
+
     <div class="row client-section mb-4">
       <div class="col-12">
         <div class="card border-0 shadow-sm">
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <!-- Detalles de la factura -->
+
     <div class="row mb-4">
       <div class="col-12">
         <div class="table-responsive">
@@ -105,7 +105,7 @@
       </div>
     </div>
 
-    <!-- Totales -->
+
     <div class="row justify-content-end">
       <div class="col-md-5">
         <table class="table table-bordered">
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Pie de página -->
+
     <div class="row mt-5">
       <div class="col-md-6">
         <div class="border p-3 rounded">
@@ -146,7 +146,7 @@
       </div>
     </div>
 
-    <!-- Mensaje final -->
+
     <div class="row mt-4">
       <div class="col-12 text-center">
         <p class="text-muted small">Este documento es una representación impresa de un CFDI y es válido como comprobante fiscal.</p>
