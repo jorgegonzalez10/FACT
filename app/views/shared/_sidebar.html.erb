@@ -1,6 +1,6 @@
 <aside class="sidebar-bg border-end">
   <div class="d-grid gap-2 p-3">
-    <%= link_to raw('<i class="fas fa-circle-plus me-2"></i> New Invoice'), "#", class: "btn-invoice text-decoration-none" %>
+    <%= link_to raw('<i class="fas fa-circle-plus me-2"></i> New Invoice'), new_invoice_path, class: "btn-invoice text-decoration-none" %>
 
 
   </div>
@@ -13,25 +13,25 @@
         <div class="d-flex align-items-center justify-content-between w-100">
           <span><i class="fas fa-home me-2"></i> Home</span>
           <i class="fas fa-chevron-right"></i>
-        </div>'), "#", class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
+        </div>'), root_path, class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
 
       <%= link_to raw('
         <div class="d-flex align-items-center justify-content-between w-100">
           <span><i class="fas fa-building me-2"></i> Companies</span>
           <i class="fas fa-chevron-right"></i>
-        </div>'), "#", class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
+        </div>'), companies_path, class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
 
       <%= link_to raw('
         <div class="d-flex align-items-center justify-content-between w-100">
           <span><i class="fas fa-user-friends me-2"></i> Clients</span>
           <i class="fas fa-chevron-right"></i>
-        </div>'), "#", class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
+        </div>'), clients_path, class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
 
       <%= link_to raw('
         <div class="d-flex align-items-center justify-content-between w-100">
           <span><i class="fas fa-file-invoice-dollar me-2"></i> Invoices</span>
           <i class="fas fa-chevron-right"></i>
-        </div>'), "#", class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
+        </div>'), invoices_path, class: "list-group list-group-item list-group-item-action bg-transparent text-white border-0" %>
 
     </div>
   </div>
