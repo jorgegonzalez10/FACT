@@ -1,0 +1,59 @@
+.sidebar-bg {
+  width: 220px;
+  background-color: #102C57;
+  border-right: 1px solid #ddd;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  z-index: 1030;
+}
+
+.with-sidebar {
+  margin-left: 250px;
+}
+
+.main-content {
+  padding: 1rem;
+}
+
+.sidebar-bg h6 {
+  color: white;
+}
+
+.sidebar-bg .list-group-item {
+  background-color: transparent;
+  border-radius: 0.5rem !important;
+  border: none;
+  color: white;
+}
+
+.sidebar-bg .list-group-item:hover {
+  background-color: #FFCBCB !important;
+  color: #102C57 !important;
+}
+
+
+.btn-invoice {
+  background-color: #FFCBCB;
+  color: #102C57; 
+  font-weight: 600;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  display: block;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #1679AB;
+    color:white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+}
