@@ -29,7 +29,6 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
     @detail_invoice = @invoice.detail_invoices.build
 
-
     @companies = Company.all
     @clients = Client.all
   end

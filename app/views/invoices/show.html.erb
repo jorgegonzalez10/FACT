@@ -34,7 +34,7 @@
           <h1 class="display-6 fw-bold mb-0">FACTURA</h1>
           <div class="d-flex justify-content-between mt-2">
             <span class="me-3">Folio: <strong><%= @invoice.id %></strong></span>
-            <span>Fecha: <strong><%= l(@invoice.created_at, format: :short) %></strong></span>
+            <span>Fecha: <strong><%= @invoice.created_at.strftime("%d/%m/%Y") %></strong></span>
           </div>
         </div>
 

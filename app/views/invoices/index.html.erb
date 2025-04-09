@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="card-footer bg-white d-flex justify-content-between">
-            <%= link_to "Ver Detalle", invoice_path(invoice), class: "btn btn-outline-primary btn-sm" %>
+            <%= link_to "Ver Detalle", invoice_path(invoice), class: "btn btn-outline-warning btn-sm" %>
             <%= button_to "Eliminar", invoice_path(invoice),
                   method: :delete,
                   data: { confirm: "¿Estás seguro de eliminar esta factura?" },
