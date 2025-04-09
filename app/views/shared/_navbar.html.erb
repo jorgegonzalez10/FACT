@@ -46,7 +46,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mi Perfil", edit_profile_path, class: "dropdown-item" %>
               <%= link_to "Configuración", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Planes", "#plans", class: "dropdown-item" %>
+              <%= link_to "Planes", plans_path, class: "dropdown-item" %>
               <%= link_to "Cerrar sesión", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             </div>
           </li>

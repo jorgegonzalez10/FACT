@@ -1,0 +1,105 @@
+.plans-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+}
+
+.plans-greeting {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0D1E40;
+  margin-bottom: 10px;
+}
+
+.plans-subtitle {
+  font-size: 20px;
+  color: #0D1E40;
+  margin-bottom: 50px;
+}
+
+.plan-card {
+  background-color: #FFB1B1;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #0D1E40;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  margin-bottom: 30px;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+  }
+
+  h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+
+    li {
+      margin: 10px 0;
+    }
+  }
+}
+
+.plan-btn {
+  background-color: #0D1E40;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 25px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0a1631;
+  }
+}
+
+.badge-recomendado {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0D1E40;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.contact-help {
+  margin-top: 60px;
+  font-size: 18px;
+  color: #0D1E40;
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.contact-btn {
+  background-color: #0D1E40;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0a1631;
+  }
+}
