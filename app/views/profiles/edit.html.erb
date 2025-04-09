@@ -1,4 +1,4 @@
-<div class="container-fluid py-5" style="background-color: #1f3b64; min-height: 100vh;">
+<div class="container-fluid py-5" style="background-color: white; min-height: 100vh;">
   <div class="d-flex justify-content-center align-items-center">
     <div class="bg-white shadow-lg rounded-4 p-5 mt-4" style="width: 100%; max-width: 700px; border: 1px solid #1679AB;">
 
@@ -11,7 +11,7 @@
         <!-- Foto de perfil -->
         <div class="text-center mb-4">
           <% if @user.photo.attached? %>
-            <%= image_tag @user.photo.variant(resize_to_limit: [150, 150]), class: "rounded-circle border shadow-sm", style: "object-fit: cover;" %>
+            <%= image_tag url_for(current_user.photo), class: "rounded-circle border shadow-sm", style: "width: 150px; height: 150px; object-fit: cover;" %>
           <% else %>
             <div class="text-muted small">No hay foto de perfil subida</div>
           <% end %>
