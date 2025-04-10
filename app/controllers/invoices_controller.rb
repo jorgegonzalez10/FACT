@@ -40,7 +40,7 @@ class InvoicesController < ApplicationController
       @invoice.calculated_totals
       redirect_to @invoice, notice: 'Factura creada con éxito.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
