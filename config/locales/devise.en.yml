@@ -63,3 +63,20 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+
+
+es:
+  devise:
+    sessions:
+      signed_in: "Has iniciado sesión correctamente"
+      signed_out: "Has cerrado sesión correctamente"
+    registrations:
+      signed_up: "Te has registrado correctamente"
+      updated: "Tu cuenta ha sido actualizada correctamente"
+    passwords:
+      send_instructions: "En breve recibirás un correo con instrucciones para restablecer tu contraseña"
+    failure:
+      invalid: "Correo o contraseña inválidos"
+      not_found_in_database: "Correo o contraseña inválidos"
+      already_authenticated: "Ya has iniciado sesión"
+      unauthenticated: "Necesitas iniciar sesión o registrarte para continuar"
