@@ -20,3 +20,13 @@
   margin-right: 8px;
   font-size: 1.2rem;
 }
+
+.btn-primary-blue {
+  background-color: #0D1E40;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background-color: darken(#0D1E40, 5%);
+  }
+}
