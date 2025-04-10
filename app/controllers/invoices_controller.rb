@@ -5,6 +5,17 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Factura_#{@invoice.id}",
+               template: "invoices/show",
+               layout: "pdf",
+               formats: [:html],
+               locals: { pdf: true }
+      end
+    end
   end
 
   def edit
@@ -13,7 +24,7 @@ class InvoicesController < ApplicationController
 
   def update
     if @invoice.update(invoice_params)
-      redirect_to invoice_path(@invoice), notice: 'FacturaCantidad actualizada.'
+      redirect_to invoice_path(@invoice), notice: 'Factura actualizada.'
     else
       redirect_to invoice_path(@invoice), alert: 'Error al actualizar.'
     end
@@ -40,7 +51,7 @@ class InvoicesController < ApplicationController
       @invoice.calculated_totals
       redirect_to @invoice, notice: 'Factura creada con éxito.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

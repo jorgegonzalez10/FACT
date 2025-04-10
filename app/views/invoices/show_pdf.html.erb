@@ -1,0 +1,35 @@
+<div class="row header-section align-items-center py-3 mb-4 border-bottom">
+      <div class="col-md-6">
+        <% if @invoice.company.photo.attached? %>
+          <%= image_tag @invoice.company.photo, class: "img-fluid mb-3", style: "max-height: 120px;" %>
+        <% else %>
+          <h2 class="fw-bold text-primary"><%= @invoice.company.name %></h2>
+        <% end %>
+
+        <div class="company-info">
+          <p class="mb-1"><span class="text-muted">RFC:</span> <%= @invoice.company.rfc %></p>
+          <p class="mb-1"><span class="text-muted">Regimen Fiscal:</span> <%= @invoice.company.fiscal_number %></p>
+          <p class="mb-1">
+            <span class="text-muted">Domicilio:</span>
+            <%= @invoice.company.location %>
+            C.P. <%= @invoice.company.postal %>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 text-md-end">
+        <div class="invoice-header bg-warning text-white p-3 rounded">
+          <h1 class="display-6 fw-bold mb-0">FACTURA</h1>
+          <div class="d-flex justify-content-between mt-2">
+            <span class="me-3">Folio: <strong><%= @invoice.id %></strong></span>
+            <span>Fecha: <strong><%= @invoice.created_at.strftime("%d/%m/%Y") %></strong></span>
+          </div>
+        </div>
+
+        <div class="payment-info mt-3">
+          <p class="mb-1"><span class="text-muted">Forma de pago:</span> <%= @invoice.payment_type %></p>
+          <p class="mb-1"><span class="text-muted">Método de pago:</span> <%= @invoice.payment_method %></p>
+          <p class="mb-1"><span class="text-muted">Moneda:</span> MXN</p>
+        </div>
+      </div>
+</div>

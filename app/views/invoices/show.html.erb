@@ -1,12 +1,10 @@
 <div class="container" id="invoice-template">
 
+  <% unless local_assigns[:pdf] %>
   <div class="d-flex justify-content-between mb-3">
     <%= link_to "← Volver a Facturas", invoices_path, class: "btn btn-outline-secondary mt-3" %>
-    <div>
-      <%= button_tag "Generar Factura", type: "button", class: "btn btn-primary me-2", id: "generate-template" %>
-
-    </div>
   </div>
+<% end %>
 
   <div class="invoice-container bg-white p-4 shadow-sm">
 
@@ -153,4 +151,11 @@
       </div>
     </div>
   </div>
+  <% unless local_assigns[:pdf] %>
+  <div class="w-100 d-flex justify-content-end my-3 ">
+    <div>
+      <%= link_to "Generar Factura", invoice_path(@invoice, format: :pdf), class: "btn btn-primary me-2", id: "generate-template" %>
+    </div>
+  </div>
+  <% end %>
 </div>

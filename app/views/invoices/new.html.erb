@@ -1,3 +1,4 @@
+<div class="container mt-5">
 <%= simple_form_for @invoice, wrapper: :vertical_form, html: { class: "needs-validation", novalidate: true } do |f| %>
   <div class="card shadow mb-4">
     <div class="card-header bg-warning text-white">
@@ -85,8 +86,9 @@
     </div>
   </div>
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+  <div class="d-grid gap-2 d-md-flex justify-content-between md-end mb-4">
     <%= link_to "Cancelar", invoices_path, class: "btn btn-secondary p-3" %>
     <%= f.button :submit, "Crear Factura", class: "btn-primary" %>
   </div>
 <% end %>
+</div>
