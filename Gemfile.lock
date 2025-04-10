@@ -340,11 +340,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
-
-  image_processing (~> 1.2)
-
   groupdate
-
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   pg (~> 1.1)
