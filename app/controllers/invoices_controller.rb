@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
                formats: [:html],
                locals: { pdf: true }
       end
+      format.xml
     end
   end
 

@@ -154,7 +154,8 @@
   <% unless local_assigns[:pdf] %>
   <div class="w-100 d-flex justify-content-end my-3 ">
     <div>
-      <%= link_to "Generar Factura", invoice_path(@invoice, format: :pdf), class: "btn btn-primary me-2", id: "generate-template" %>
+      <%= link_to '<i class="fa-solid fa-file-pdf"></i>'.html_safe, invoice_path(@invoice, format: :pdf), target: '_blank', class: "btn btn-primary me-2", id: "generate-template" %>
+      <%= link_to '<i class="fa-regular fa-file"></i>'.html_safe, invoice_path(@invoice, format: :xml), target: '_blank', class: "btn btn-primary me-2", id: "generate-template" %>
     </div>
   </div>
   <% end %>
