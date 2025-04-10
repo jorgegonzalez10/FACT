@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  background-color: rgba(16, 44, 87, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1040
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +15,84 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-lewagon .navbar-nav .nav-link,
+.navbar-lewagon .navbar-brand,
+.navbar-lewagon .dropdown-menu a.dropdown-item {
+  color: white !important;
+}
+
+.navbar-lewagon .nav-link {
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.navbar-lewagon .nav-link:hover,
+.navbar-lewagon .dropdown-menu a.dropdown-item:hover {
+  color: #FFCBCB !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.btn-primary-custom {
+  background-color: #FFCBCB;
+  color: #0D1E40;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 8px 18px; 
+  font-size: 15px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary-custom:hover {
+  background-color: #f5baba;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-custom {
+  background-color: transparent;
+  border: 2px solid #FFCBCB;
+  color: #FFCBCB;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-custom:hover {
+  background-color: rgba(255, 203, 203, 0.1);
+  transform: translateY(-1px);
+}
+
+.navbar .auth-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 50px !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
+  margin-left: 16px;
+}
+
+.navbar-lewagon .dropdown-menu {
+  background-color: #1679AB;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.navbar-lewagon .dropdown-menu a.dropdown-item {
+  color: white !important;
+}
+
+.navbar-lewagon .dropdown-menu a.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFCBCB !important;
+  border-radius: 6px;
 }
