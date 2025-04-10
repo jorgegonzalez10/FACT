@@ -15,7 +15,7 @@ module Fact
       generate.test_framework :test_unit, fixture: false
     end
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 7.1        
     config.i18n.default_locale = :es
     config.i18n.available_locales = [:es, :en]
 
