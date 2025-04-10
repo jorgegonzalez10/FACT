@@ -3,8 +3,8 @@ class Invoice < ApplicationRecord
   belongs_to :client
   has_many :detail_invoices, dependent: :destroy
   accepts_nested_attributes_for :detail_invoices, allow_destroy: true
-
-
+  validates :company, presence: true
+  validates :client, presence: true
 
 def calculated_totals
   tax_rate = 0.16
@@ -18,10 +18,7 @@ def calculated_totals
 
     sub_total += detail.total_value
   end
-
-
   self.sub_total = sub_total
-
   self.total = self.sub_total + (self.sub_total * tax_rate)
   self.save
 end
