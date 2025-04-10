@@ -1,20 +1,26 @@
-<div class="container">
-<h2>Forgot your password?</h2>
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="bg-white p-5 shadow rounded-4 border border-2" style="width: 100%; max-width: 500px; border-color: #1679AB;">
+    <h2 class="text-center mb-4 text-warning fw-bold">¿Olvidaste tu contraseña?</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+      <div class="form-inputs mb-3">
+        <%= f.input :email,
+                    label: "Correo electrónico",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", class: "form-control form-control-lg" } %>
+      </div>
+
+      <div class="form-actions mb-3">
+        <%= f.button :submit, "Reiniciar contraseña", class: "btn btn-warning w-100 rounded-pill fs-5 py-2" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= link_to "¿Recordaste tu contraseña? Iniciar sesión", new_session_path(resource_name), class: "d-block text-decoration-none text-primary fw-semibold mb-1" %>
+      <%= link_to "¿No tenés cuenta? Registrate", new_registration_path(resource_name), class: "d-block text-decoration-none text-secondary" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>
