@@ -20,8 +20,8 @@
         <%= f.input :certificate, label: "Código CFDI", input_html: { class: 'form-control form-control-lg' } %>
       </div>
       <div class="col-md-4">
-        <%= f.label :time, "Fecha", class: "form-label" %>
-         <%= f.date_field :time, class: "form-control form-control-lg" %>
+        <%= f.label :time_date, "Fecha", class: "form-label" %>
+         <%= f.date_field :time_date, start_year: Date.today.year, class: "form-control form-control-lg" %>
       </div>
     </div>
 
