@@ -1,0 +1,138 @@
+.invoice-table th {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+    color: #102C57;
+  }
+}
+
+.invoice-table .invoice-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.invoice-actions .btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+}
+
+.btn-view {
+  background-color: #102C57;
+  color: white;
+
+  &:hover {
+    background-color: darken(#102C57, 10%);
+  }
+}
+
+.btn-download {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #dc3545;
+  color: white;
+
+  &:hover {
+    background-color: darken(#dc3545, 10%);
+  }
+}
+
+.badge-pending {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.badge-paid {
+  background-color: #198754;
+  color: #fff;
+}
+
+.badge-cancelled {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.table-container {
+  background-color: #ffffff;
+  border: 2px solid #102C57;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  padding: 20px;
+  margin-bottom: 30px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f5f8ff;
+      color: #102C57;
+      font-weight: 600;
+    }
+
+    tbody tr {
+      border-top: 1px solid #eee;
+
+      &:hover {
+        background-color: #f9fbff;
+      }
+    }
+  }
+}
+
+.new-invoice-btn {
+  display: inline-block;
+  background-color: #102C57;
+  color: white;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  border: none;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #0D1E40;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.invoice-title {
+  text-align: center;
+  color: #102C57;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 40px 0 20px;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background-color: #102C57;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+}
