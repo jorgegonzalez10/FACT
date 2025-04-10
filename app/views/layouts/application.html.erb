@@ -14,7 +14,7 @@
     <!-- Feather icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- JavaScript (Importmap incluye todos los imports como faq.js) -->
+    <!-- JavaScript (faq.js) -->
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "Chart.bundle", "chartkick", type: "module" %>
 
@@ -31,7 +31,7 @@
 
   <!-- Sidebar condicionada al sign up -->
   <% if user_signed_in? %>
-  <div class="d-flex" style="min-height: calc(100vh - 56px);">
+  <div class=" layout-wrapper">
     <%= render "shared/sidebar" %>
     <main class="main-content with-sidebar">
       <%= yield %>

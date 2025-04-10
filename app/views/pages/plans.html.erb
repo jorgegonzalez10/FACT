@@ -1,0 +1,57 @@
+<section class="plans-section">
+  <div class="container text-center">
+    <h2 class="plans-greeting">👋 Hola, <%= current_user.name %></h2>
+    <p class="plans-subtitle">Elegí el plan que mejor se adapta a vos</p>
+
+    <div class="row justify-content-center">
+      <!-- Plan Gratuito -->
+      <div class="col-md-4">
+        <div class="plan-card">
+          <h3>Gratuito</h3>
+          <p class="price">$0</p>
+          <ul>
+            <li>Hasta 5 facturas mensuales</li>
+            <li>Soporte por email</li>
+            <li>Generación SAT manual</li>
+          </ul>
+          <%= link_to "Comenzar", root_path, class: "btn plan-btn" %>
+        </div>
+      </div>
+
+      <!-- Plan Pro -->
+      <div class="col-md-4">
+        <div class="plan-card recomendado">
+          <div class="badge-recomendado">⭐ Recomendado</div>
+          <h3>Pro</h3>
+          <p class="price">$1.500</p>
+          <ul>
+            <li>Facturación ilimitada</li>
+            <li>Automatización SAT</li>
+            <li>Soporte en vivo</li>
+          </ul>
+          <%= link_to "Elegir Pro", root_path, class: "btn plan-btn" %>
+        </div>
+      </div>
+
+      <!-- Plan Premium -->
+      <div class="col-md-4">
+        <div class="plan-card">
+          <h3>Premium</h3>
+          <p class="price">$2.500</p>
+          <ul>
+            <li>Todo lo de Pro</li>
+            <li>Panel de equipo</li>
+            <li>Soporte personalizado</li>
+          </ul>
+          <%= link_to "Ir a Premium", root_path, class: "btn plan-btn" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje final -->
+    <div class="contact-help">
+      <p>¿No sabés qué plan elegir? Estamos para ayudarte. No dudes en escribirnos y te asesoramos sin compromiso.</p>
+      <%= link_to "Contactanos", "#contact", class: "btn contact-btn" %>
+    </div>
+  </div>
+</section>

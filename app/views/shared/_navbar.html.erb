@@ -1,38 +1,62 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "FACT-logo.png", class: "navbar-logo", alt: "FACT" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "Companies", companies_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item">
+            <%= link_to "Clients", clients_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item"></li>
+          <li class="nav-item">
+            <%= link_to "Invoices", invoices_path, class: "nav-link" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <li class="nav-item me-3">
+            <%= link_to "Planes", "#plans", class: "nav-link" %>
+          </li>
+          <li class="nav-item me-3">
+            <%= link_to "Sobre Nosotros", "#about", class: "nav-link" %>
+          </li>
+          <li class="nav-item me-3">
+            <%= link_to "FAQ", "#faq", class: "nav-link" %>
           </li>
         <% end %>
       </ul>
+
+      <% if user_signed_in? %>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a href="#" class="avatar nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown">
+              <%= image_tag(current_user.photo.attached? ? url_for(current_user.photo) : "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu") %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Mi Perfil", edit_profile_path, class: "dropdown-item" %>
+              <%= link_to "Configuración", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Planes", plans_path, class: "dropdown-item" %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      <% else %>
+        <div class="auth-buttons">
+          <%= link_to "Iniciar Sesión", new_user_session_path, class: "btn btn-secondary-custom" %>
+          <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-primary-custom" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
     <p>
       Facturar en SAT suele ser una de las tareas más tediosas y repetitivas para cualquier profesional. Con nuestra plataforma, podés automatizarlo y olvidarte del estrés.
     </p>
-    <%= link_to "Registrate", "#", class: "btn-primary" %>
+    <%= link_to "Registrate", new_user_registration_path, class: "btn-primary" %>
   </div>
 
   <div class="hero-image">
@@ -62,7 +62,7 @@
           <li>Soporte por email</li>
           <li>Generación SAT manual</li>
         </ul>
-        <a href="#" class="btn-primary">Comenzar</a>
+        <%= link_to "Comenzar", new_user_registration_path, class: "btn-primary" %>
       </div>
 
       <div class="pricing-card recomendado">
@@ -73,7 +73,7 @@
           <li>Automatización SAT</li>
           <li>Soporte en vivo</li>
         </ul>
-        <a href="#" class="btn-primary">Elegir Pro</a>
+        <%= link_to "Elegir Pro", new_user_registration_path, class: "btn-primary" %>
       </div>
 
       <div class="pricing-card">
@@ -84,7 +84,7 @@
           <li>Panel de equipo</li>
           <li>Soporte personalizado</li>
         </ul>
-        <a href="#" class="btn-primary">Ir a Premium</a>
+        <%= link_to "Ir a Premium", new_user_registration_path, class: "btn-primary" %>
       </div>
     </div>
   </div>
@@ -111,12 +111,12 @@
 
     <div class="team-grid">
       <div class="team-member">
-        <%= image_tag("RAT.jpeg", alt: "Foto de Olivia Calderon") %>
+        <%= image_tag("OC.jpeg", alt: "Foto de Olivia Calderon") %>
         <p class="team-name">Olivia Calderon</p>
         <p class="team-role">Co-Founder</p>
       </div>
       <div class="team-member">
-        <%= image_tag("RAT.jpeg", alt: "Foto de Jorge Gonzalez") %>
+        <%= image_tag("JG.jpeg", alt: "Foto de Jorge Gonzalez") %>
         <p class="team-name">Jorge Gonzalez</p>
         <p class="team-role">Co-Founder</p>
       </div>
@@ -214,7 +214,7 @@
   </div>
 </footer>
 
-
 <script>
   feather.replace();
 </script>
+
