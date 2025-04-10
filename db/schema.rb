@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_09_190230) do
+
+
+ActiveRecord::Schema[7.1].define(version: 2025_04_09_220107) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_190230) do
     t.integer "postal"
     t.string "certificate"
     t.string "location"
-    t.date "time"
+    t.date "time_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

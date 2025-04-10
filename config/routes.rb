@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   devise_for :users
   resource :profile, only: [:edit, :update], controller: 'profiles'
   root to: "pages#home"

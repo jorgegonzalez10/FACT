@@ -1,2 +1,156 @@
-<h1>Invoices#show</h1>
-<p>Find me in app/views/invoices/show.html.erb</p>
+<div class="container" id="invoice-template">
+
+  <div class="d-flex justify-content-between mb-3">
+    <%= link_to "← Volver a Facturas", invoices_path, class: "btn btn-outline-secondary mt-3" %>
+    <div>
+      <%= button_tag "Generar Factura", type: "button", class: "btn btn-primary me-2", id: "generate-template" %>
+
+    </div>
+  </div>
+
+  <div class="invoice-container bg-white p-4 shadow-sm">
+
+    <div class="row header-section align-items-center py-3 mb-4 border-bottom">
+      <div class="col-md-6">
+        <% if @invoice.company.photo.attached? %>
+          <%= image_tag @invoice.company.photo, class: "img-fluid mb-3", style: "max-height: 120px;" %>
+        <% else %>
+          <h2 class="fw-bold text-primary"><%= @invoice.company.name %></h2>
+        <% end %>
+
+        <div class="company-info">
+          <p class="mb-1"><span class="text-muted">RFC:</span> <%= @invoice.company.rfc %></p>
+          <p class="mb-1"><span class="text-muted">Regimen Fiscal:</span> <%= @invoice.company.fiscal_number %></p>
+          <p class="mb-1">
+            <span class="text-muted">Domicilio:</span>
+            <%= @invoice.company.location %>
+            C.P. <%= @invoice.company.postal %>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 text-md-end">
+        <div class="invoice-header bg-warning text-white p-3 rounded">
+          <h1 class="display-6 fw-bold mb-0">FACTURA</h1>
+          <div class="d-flex justify-content-between mt-2">
+            <span class="me-3">Folio: <strong><%= @invoice.id %></strong></span>
+            <span>Fecha: <strong><%= @invoice.created_at.strftime("%d/%m/%Y") %></strong></span>
+          </div>
+        </div>
+
+        <div class="payment-info mt-3">
+          <p class="mb-1"><span class="text-muted">Forma de pago:</span> <%= @invoice.payment_type %></p>
+          <p class="mb-1"><span class="text-muted">Método de pago:</span> <%= @invoice.payment_method %></p>
+          <p class="mb-1"><span class="text-muted">Moneda:</span> MXN</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row client-section mb-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-light">
+            <strong>Datos del Cliente</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-2"><span class="text-muted">Nombre/Razón Social:</span> <strong><%= @invoice.client.fiscal_name %></strong></p>
+                <p class="mb-2"><span class="text-muted">RFC:</span> <%= @invoice.client.rfc %></p>
+                <p class="mb-2"><span class="text-muted">Regimen Fiscal:</span> <%= @invoice.client.fiscal_number %></p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-2"><span class="text-muted">Teléfono:</span> <%= @invoice.client.phone %></p>
+                <p class="mb-2"><span class="text-muted">Email:</span> <%= @invoice.client.email %></p>
+                <p class="mb-2"><span class="text-muted">C.P.:</span> <%= @invoice.client.postal %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="table-light">
+              <tr>
+                <th width="5%">Cant.</th>
+                <th width="10%">Clave</th>
+                <th width="35%">Descripción</th>
+                <th width="15%">P. Unitario</th>
+                <th width="15%">Importe</th>
+                <th width="10%">IVA (16%)</th>
+                <th width="10%">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @invoice.detail_invoices.each do |detail| %>
+                <tr>
+                  <td class="text-center"><%= detail.amount %></td>
+                  <td><%= detail.product_number %></td>
+                  <td><%= detail.description %></td>
+                  <td class="text-end">$<%= number_with_precision(detail.unit_value, precision: 2) %></td>
+                  <td class="text-end">$<%= number_with_precision(detail.amount * detail.unit_value, precision: 2) %></td>
+                  <td class="text-end">$<%= number_with_precision(detail.amount * detail.unit_value * 0.16, precision: 2) %></td>
+                  <td class="text-end fw-bold">$<%= number_with_precision(detail.amount * detail.unit_value * 1.16, precision: 2) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-end">
+      <div class="col-md-5">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="text-end"><strong>Subtotal:</strong></td>
+              <td class="text-end">$<%= number_with_precision(@invoice.sub_total, precision: 2) %></td>
+            </tr>
+            <tr>
+              <td class="text-end"><strong>IVA (16%):</strong></td>
+              <td class="text-end">$<%= number_with_precision(@invoice.taxes, precision: 2) %></td>
+            </tr>
+            <tr class="table-active">
+              <td class="text-end"><strong>Total:</strong></td>
+              <td class="text-end fw-bold">$<%= number_with_precision(@invoice.total, precision: 2) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="border p-3 rounded">
+          <p class="fw-bold mb-2">Condiciones y comentarios</p>
+          <p class="mb-1">Forma de pago: <%= @invoice.payment_method %></p>
+          <p>Pago en una sola exhibición</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="border p-3 rounded">
+          <p class="fw-bold mb-2">Información Fiscal</p>
+          <p class="mb-1">UUID: <code><%= SecureRandom.uuid.upcase %></code></p>
+          <p class="mb-1">No. de Serie del Certificado: <code><%= rand(10**20).to_s.rjust(20,'0') %></code></p>
+          <p class="mb-0">Sello Digital: <code><%= SecureRandom.hex(32).upcase %></code></p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <p class="text-muted small">Este documento es una representación impresa de un CFDI y es válido como comprobante fiscal.</p>
+      </div>
+    </div>
+  </div>
+</div>
