@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
       const item = button.parentElement;

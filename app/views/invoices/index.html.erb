@@ -1,45 +1,96 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="mb-0">Facturas</h1>
-    <%= link_to "Nueva Factura", new_invoice_path, class: "btn btn-primary" %>
+<div class="d-flex justify-content-end mb-4">
+    <%= link_to "Nueva Factura", new_invoice_path, class: "new-invoice-btn" %>
   </div>
+<h1 class="invoice-title">Facturas</h1>
 
-  <div class="row">
-    <% @invoices.each do |invoice| %>
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-header bg-light d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Factura #<%= invoice.id %></h5>
-            <span class="badge bg-secondary"><%= invoice.created_at.strftime("%d/%m/%Y") %></span>
-          </div>
-          <div class="card-body">
-            <div class="mb-3">
-              <h6 class="text-muted mb-1">Emisor:</h6>
-              <p class="mb-0"><%= invoice.company.name %></p>
+  <% if @invoices.any? %>
+    <!-- Tabla de todas las facturas -->
+    <div class="table-container">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle invoice-table" data-controller="sort">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th data-action="click->sort#sort" data-column="client" data-type="string">Cliente</th>
+              <th data-action="click->sort#sort" data-column="company" data-type="string">Compañía</th>
+              <th data-action="click->sort#sort" data-column="date" data-type="date">Fecha</th>
+              <th data-action="click->sort#sort" data-column="amount" data-type="number">Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @invoices.each do |invoice| %>
+              <tr data-sort-target="row"
+                  data-client="<%= invoice.client.fiscal_name %>"
+                  data-company="<%= invoice.company.name %>"
+                  data-date="<%= invoice.created_at.iso8601 %>"
+                  data-amount="<%= invoice.total %>">
+                <td><%= invoice.id %></td>
+                <td><%= link_to invoice.client.fiscal_name, client_path(invoice.client), class: "text-decoration-none" %></td>
+                <td><%= link_to invoice.company.name, company_path(invoice.company), class: "text-decoration-none" %></td>
+                <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
+                <td>$<%= number_with_precision(invoice.total, precision: 2) %></td>
+                <td class="invoice-actions">
+                  <%= link_to invoice_path(invoice), class: "btn btn-sm btn-view" do %>
+                    <i data-feather="eye"></i>
+                  <% end %>
+                  <%= button_to invoice_path(invoice),
+                        method: :delete,
+                        data: { confirm: "¿Estás seguro de eliminar esta factura?" },
+                        class: "btn btn-sm btn-cancel" do %>
+                    <i data-feather="trash-2"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Últimas 3 facturas como cards -->
+    <h1 class="invoice-title">Últimas Facturas</h1>
+    <div class="row">
+      <% @invoices.last(3).reverse.each do |invoice| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Factura #<%= invoice.id %></h5>
+              <span class="badge bg-secondary"><%= invoice.created_at.strftime("%d/%m/%Y") %></span>
             </div>
-            <div class="mb-3">
-              <h6 class="text-muted mb-1">Cliente:</h6>
-              <p class="mb-0"><%= invoice.client.fiscal_name %></p>
+            <div class="card-body">
+              <div class="mb-3">
+                <h6 class="text-muted mb-1">Emisor:</h6>
+                <p class="mb-0">
+                  <%= link_to invoice.company.name, company_path(invoice.company), class: "text-decoration-none fw-medium" %>
+                </p>
+              </div>
+              <div class="mb-3">
+                <h6 class="text-muted mb-1">Cliente:</h6>
+                <p class="mb-0">
+                  <%= link_to invoice.client.fiscal_name, client_path(invoice.client), class: "text-decoration-none fw-medium" %>
+                </p>
+              </div>
+              <div class="mb-3">
+                <h6 class="text-muted mb-1">Total:</h6>
+                <p class="h5 text-success">$<%= number_with_precision(invoice.total, precision: 2) %></p>
+              </div>
             </div>
-            <div class="mb-3">
-              <h6 class="text-muted mb-1">Total:</h6>
-              <p class="h5 text-success">$<%= number_with_precision(invoice.total, precision: 2) %></p>
+            <div class="card-footer bg-white d-flex justify-content-between">
+              <%= link_to "Ver Detalle", invoice_path(invoice), class: "btn btn-view btn-sm" %>
+              <%= button_to "Eliminar", invoice_path(invoice),
+                    method: :delete,
+                    data: { confirm: "¿Estás seguro de eliminar esta factura?" },
+                    class: "btn btn-cancel btn-sm" %>
             </div>
-          </div>
-          <div class="card-footer bg-white d-flex justify-content-between">
-            <%= link_to "Ver Detalle", invoice_path(invoice), class: "btn btn-outline-warning btn-sm" %>
-            <%= button_to "Eliminar", invoice_path(invoice),
-                  method: :delete,
-                  data: { confirm: "¿Estás seguro de eliminar esta factura?" },
-                  class: "btn btn-outline-danger btn-sm" %>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-
-  <% if @invoices.empty? %>
+      <% end %>
+    </div>
+  <% else %>
     <div class="alert alert-info text-center">
       No hay facturas registradas aún.
     </div>
   <% end %>
+</div>
