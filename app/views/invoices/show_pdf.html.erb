@@ -1,7 +1,7 @@
 <div class="row header-section align-items-center py-3 mb-4 border-bottom">
       <div class="col-md-6">
         <% if @invoice.company.photo.attached? %>
-          <%= image_tag @invoice.company.photo, class: "img-fluid mb-3", style: "max-height: 120px;" %>
+          <%= cl_image_tag @invoice.company.photo.key, class: "img-fluid mb-3", style: "max-height: 120px;" %>
         <% else %>
           <h2 class="fw-bold text-primary"><%= @invoice.company.name %></h2>
         <% end %>

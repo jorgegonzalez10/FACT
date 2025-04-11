@@ -11,7 +11,7 @@
         <!-- Foto de perfil -->
         <div class="text-center mb-4">
           <% if @user.photo.attached? %>
-            <%= image_tag url_for(current_user.photo), class: "rounded-circle border shadow-sm", style: "width: 150px; height: 150px; object-fit: cover;" %>
+            <%= cl_image_tag url_for(current_user.photo), class: "rounded-circle border shadow-sm", style: "width: 150px; height: 150px; object-fit: cover;" %>
           <% else %>
             <div class="text-muted small">No hay foto de perfil subida</div>
           <% end %>

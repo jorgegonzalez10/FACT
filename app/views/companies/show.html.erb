@@ -4,7 +4,7 @@
 
       <div class="col-md-4 bg-light d-flex align-items-center justify-content-center p-4 rounded-start-4">
         <% if @company.photo.attached? %>
-          <%= image_tag url_for(@company.photo), class: "img-fluid rounded", style: "max-height: 200px;" %>
+          <%= cl_image_tag url_for(@company.photo), class: "img-fluid rounded", style: "max-height: 200px;" %>
         <% else %>
           <img src="https://via.placeholder.com/200x200?text=Logo" class="img-fluid rounded" alt="Logo">
         <% end %>
