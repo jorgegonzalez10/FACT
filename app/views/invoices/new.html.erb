@@ -11,7 +11,7 @@
                 collection: @companies,
                 label_method: :name,
                 value_method: :id,
-                label: "Empresa",
+                label: ("Empresa " + link_to('<i class="fa-solid fa-square-plus"></i>'.html_safe, new_company_path, style: "margin-left: 5px; padding: 3px; font-size: 23px;")).html_safe,
                 prompt: "Selecciona una empresa",
                 input_html: { class: "form-select" },
                 wrapper_html: { class: "mb-3" } %>
@@ -22,7 +22,7 @@
                 collection: @clients,
                 label_method: :fiscal_name,
                 value_method: :id,
-                label: "Cliente",
+                label: ("Cliente" + link_to('<i class="fa-solid fa-square-plus"></i>'.html_safe, new_client_path, style: "margin-left: 5px; padding: 3px; font-size:23px;")).html_safe,
                 prompt: "Selecciona un cliente",
                 input_html: { class: "form-select" },
                 wrapper_html: { class: "mb-3" } %>

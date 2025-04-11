@@ -1,67 +1,71 @@
-<div class="container" id="invoice-template">
+<div class="container" id="invoice-template" style="font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; font-size: 14px;">
 
   <% unless local_assigns[:pdf] %>
-  <div class="d-flex justify-content-between mb-3">
-    <%= link_to "← Volver a Facturas", invoices_path, class: "btn btn-outline-secondary mt-3" %>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+    <%= link_to "← Volver a Facturas", invoices_path, style: "background-color: transparent; border: 1px solid #6c757d; color: #6c757d; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none; margin-top: 0.5rem; font-size: 0.9rem;" %>
   </div>
-<% end %>
+  <% end %>
 
-  <div class="invoice-container bg-white p-4 shadow-sm">
+  <div style="background-color: white; padding: 1rem; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);">
 
-    <div class="row header-section align-items-center py-3 mb-4 border-bottom">
-      <div class="col-md-6">
+
+    <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; padding: 0.5rem 0; margin-bottom: 1rem; border-bottom: 1px solid #dee2e6;">
+
+
+      <div style="flex: 1; min-width: 250px; margin-right: 1rem;">
+        <div style="background-color: #1679AB; color: white; padding: 0.8rem; border-radius: 0.25rem;">
+          <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">FACTURA</h1>
+          <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+            <span>Folio: <strong><%= @invoice.id %></strong></span>
+            <span>Fecha: <strong><%= @invoice.created_at.strftime("%d/%m/%Y") %></strong></span>
+          </div>
+        </div>
+
+        <div style="margin-top: 0.8rem; font-size: 0.9rem;">
+          <p style="margin-bottom: 0.2rem;"><span style="color: #6c757d;">Forma de pago:</span> <%= @invoice.payment_type %></p>
+          <p style="margin-bottom: 0.2rem;"><span style="color: #6c757d;">Método de pago:</span> <%= @invoice.payment_method %></p>
+          <p style="margin-bottom: 0;"><span style="color: #6c757d;">Moneda:</span> MXN</p>
+        </div>
+      </div>
+
+
+      <div style="flex: 1; min-width: 250px; text-align: right;">
         <% if @invoice.company.photo.attached? %>
-          <%= image_tag @invoice.company.photo, class: "img-fluid mb-3", style: "max-height: 120px;" %>
+          <%= image_tag @invoice.company.photo, style: "max-width: 100%; max-height: 80px; margin-bottom: 0.3rem;" %>
         <% else %>
-          <h2 class="fw-bold text-primary"><%= @invoice.company.name %></h2>
+          <h2 style="font-weight: 700; color: #0d6efd; font-size: 1.3rem; margin-bottom: 0.3rem;"><%= @invoice.company.name %></h2>
         <% end %>
 
-        <div class="company-info">
-          <p class="mb-1"><span class="text-muted">RFC:</span> <%= @invoice.company.rfc %></p>
-          <p class="mb-1"><span class="text-muted">Regimen Fiscal:</span> <%= @invoice.company.fiscal_number %></p>
-          <p class="mb-1">
-            <span class="text-muted">Domicilio:</span>
+        <div style="text-align: right; font-size: 0.9rem;">
+          <p style="margin-bottom: 0.2rem;"><span style="color: #6c757d;">RFC:</span> <%= @invoice.company.rfc %></p>
+          <p style="margin-bottom: 0.2rem;"><span style="color: #6c757d;">Regimen Fiscal:</span> <%= @invoice.company.fiscal_number %></p>
+          <p style="margin-bottom: 0;">
+            <span style="color: #6c757d;">Domicilio:</span>
             <%= @invoice.company.location %>
             C.P. <%= @invoice.company.postal %>
           </p>
         </div>
       </div>
-
-      <div class="col-md-6 text-md-end">
-        <div class="invoice-header bg-warning text-white p-3 rounded">
-          <h1 class="display-6 fw-bold mb-0">FACTURA</h1>
-          <div class="d-flex justify-content-between mt-2">
-            <span class="me-3">Folio: <strong><%= @invoice.id %></strong></span>
-            <span>Fecha: <strong><%= @invoice.created_at.strftime("%d/%m/%Y") %></strong></span>
-          </div>
-        </div>
-
-        <div class="payment-info mt-3">
-          <p class="mb-1"><span class="text-muted">Forma de pago:</span> <%= @invoice.payment_type %></p>
-          <p class="mb-1"><span class="text-muted">Método de pago:</span> <%= @invoice.payment_method %></p>
-          <p class="mb-1"><span class="text-muted">Moneda:</span> MXN</p>
-        </div>
-      </div>
     </div>
 
 
-    <div class="row client-section mb-4">
-      <div class="col-12">
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-light">
+    <div style="margin-bottom: 1rem;">
+      <div style="width: 100%;">
+        <div style="border: none; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);">
+          <div style="background-color: #f8f9fa; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.125); font-size: 0.95rem;">
             <strong>Datos del Cliente</strong>
           </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="mb-2"><span class="text-muted">Nombre/Razón Social:</span> <strong><%= @invoice.client.fiscal_name %></strong></p>
-                <p class="mb-2"><span class="text-muted">RFC:</span> <%= @invoice.client.rfc %></p>
-                <p class="mb-2"><span class="text-muted">Regimen Fiscal:</span> <%= @invoice.client.fiscal_number %></p>
+          <div style="padding: 0.8rem; font-size: 0.9rem;">
+            <div style="display: flex; flex-wrap: wrap;">
+              <div style="flex: 0 0 50%; max-width: 50%;">
+                <p style="margin-bottom: 0.3rem;"><span style="color: #6c757d;">Nombre/Razón Social:</span> <strong><%= @invoice.client.fiscal_name %></strong></p>
+                <p style="margin-bottom: 0.3rem;"><span style="color: #6c757d;">RFC:</span> <%= @invoice.client.rfc %></p>
+                <p style="margin-bottom: 0;"><span style="color: #6c757d;">Regimen Fiscal:</span> <%= @invoice.client.fiscal_number %></p>
               </div>
-              <div class="col-md-6">
-                <p class="mb-2"><span class="text-muted">Teléfono:</span> <%= @invoice.client.phone %></p>
-                <p class="mb-2"><span class="text-muted">Email:</span> <%= @invoice.client.email %></p>
-                <p class="mb-2"><span class="text-muted">C.P.:</span> <%= @invoice.client.postal %></p>
+              <div style="flex: 0 0 50%; max-width: 50%;">
+                <p style="margin-bottom: 0.3rem;"><span style="color: #6c757d;">Teléfono:</span> <%= @invoice.client.phone %></p>
+                <p style="margin-bottom: 0.3rem;"><span style="color: #6c757d;">Email:</span> <%= @invoice.client.email %></p>
+                <p style="margin-bottom: 0;"><span style="color: #6c757d;">C.P.:</span> <%= @invoice.client.postal %></p>
               </div>
             </div>
           </div>
@@ -70,55 +74,53 @@
     </div>
 
 
-    <div class="row mb-4">
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead class="table-light">
+    <div style="margin-bottom: 1rem;">
+      <div style="width: 100%; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; font-size: 0.85rem;">
+          <thead style="background-color: #f8f9fa;">
+            <tr>
+              <th style="width: 5%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">Cant.</th>
+              <th style="width: 10%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">Clave</th>
+              <th style="width: 35%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">Descripción</th>
+              <th style="width: 15%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">P. Unitario</th>
+              <th style="width: 15%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">Importe</th>
+              <th style="width: 10%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">IVA (16%)</th>
+              <th style="width: 10%; padding: 0.5rem; border: 1px solid #dee2e6; text-align: left;">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @invoice.detail_invoices.each do |detail| %>
               <tr>
-                <th width="5%">Cant.</th>
-                <th width="10%">Clave</th>
-                <th width="35%">Descripción</th>
-                <th width="15%">P. Unitario</th>
-                <th width="15%">Importe</th>
-                <th width="10%">IVA (16%)</th>
-                <th width="10%">Total</th>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: center;"><%= detail.amount %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6;"><%= detail.product_number %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6;"><%= detail.description %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;">$<%= number_with_precision(detail.unit_value, precision: 2) %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;">$<%= number_with_precision(detail.amount * detail.unit_value, precision: 2) %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;">$<%= number_with_precision(detail.amount * detail.unit_value * 0.16, precision: 2) %></td>
+                <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right; font-weight: 700;">$<%= number_with_precision(detail.amount * detail.unit_value * 1.16, precision: 2) %></td>
               </tr>
-            </thead>
-            <tbody>
-              <% @invoice.detail_invoices.each do |detail| %>
-                <tr>
-                  <td class="text-center"><%= detail.amount %></td>
-                  <td><%= detail.product_number %></td>
-                  <td><%= detail.description %></td>
-                  <td class="text-end">$<%= number_with_precision(detail.unit_value, precision: 2) %></td>
-                  <td class="text-end">$<%= number_with_precision(detail.amount * detail.unit_value, precision: 2) %></td>
-                  <td class="text-end">$<%= number_with_precision(detail.amount * detail.unit_value * 0.16, precision: 2) %></td>
-                  <td class="text-end fw-bold">$<%= number_with_precision(detail.amount * detail.unit_value * 1.16, precision: 2) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
 
 
-    <div class="row justify-content-end">
-      <div class="col-md-5">
-        <table class="table table-bordered">
+    <div style="display: flex; flex-wrap: wrap; justify-content: flex-end;">
+      <div style="flex: 0 0 40%; max-width: 40%;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; font-size: 0.9rem;">
           <tbody>
             <tr>
-              <td class="text-end"><strong>Subtotal:</strong></td>
-              <td class="text-end">$<%= number_with_precision(@invoice.sub_total, precision: 2) %></td>
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;"><strong>Subtotal:</strong></td>
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;">$<%= number_with_precision(@invoice.sub_total, precision: 2) %></td>
             </tr>
             <tr>
-              <td class="text-end"><strong>IVA (16%):</strong></td>
-              <td class="text-end">$<%= number_with_precision(@invoice.taxes, precision: 2) %></td>
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;"><strong>IVA (16%):</strong></td>
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;">$<%= number_with_precision(@invoice.taxes, precision: 2) %></td>
             </tr>
-            <tr class="table-active">
-              <td class="text-end"><strong>Total:</strong></td>
-              <td class="text-end fw-bold">$<%= number_with_precision(@invoice.total, precision: 2) %></td>
+            <tr style="background-color: rgba(0,0,0,0.05);">
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right;"><strong>Total:</strong></td>
+              <td style="padding: 0.5rem; border: 1px solid #dee2e6; text-align: right; font-weight: 700;">$<%= number_with_precision(@invoice.total, precision: 2) %></td>
             </tr>
           </tbody>
         </table>
@@ -126,36 +128,44 @@
     </div>
 
 
-    <div class="row mt-5">
-      <div class="col-md-6">
-        <div class="border p-3 rounded">
-          <p class="fw-bold mb-2">Condiciones y comentarios</p>
-          <p class="mb-1">Forma de pago: <%= @invoice.payment_method %></p>
-          <p>Pago en una sola exhibición</p>
+    <div style="display: flex; flex-wrap: wrap; margin-top: 1.5rem;">
+      <div style="flex: 0 0 50%; max-width: 50%; padding-right: 0.5rem;">
+        <div style="border: 1px solid #dee2e6; padding: 0.8rem; border-radius: 0.25rem; font-size: 0.9rem;">
+          <p style="font-weight: 700; margin-bottom: 0.3rem;">Condiciones y comentarios</p>
+          <p style="margin-bottom: 0.2rem;">Forma de pago: <%= @invoice.payment_method %></p>
+          <p style="margin-bottom: 0;">Pago en una sola exhibición</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="border p-3 rounded">
-          <p class="fw-bold mb-2">Información Fiscal</p>
-          <p class="mb-1">UUID: <code><%= SecureRandom.uuid.upcase %></code></p>
-          <p class="mb-1">No. de Serie del Certificado: <code><%= rand(10**20).to_s.rjust(20,'0') %></code></p>
-          <p class="mb-0">Sello Digital: <code><%= SecureRandom.hex(32).upcase %></code></p>
+      <div style="flex: 0 0 50%; max-width: 50%; padding-left: 0.5rem; margin-top: 0.4rem;">
+        <div style="border: 1px solid #dee2e6; padding: 0.8rem; border-radius: 0.25rem; font-size: 0.9rem;">
+          <p style="font-weight: 700; margin-bottom: 0.3rem;">Información Fiscal</p>
+          <p style="margin-bottom: 0.2rem; word-break: break-all;">UUID: <code style="background-color: #f8f9fa; padding: 0.1rem 0.3rem; border-radius: 0.2rem; font-size: 0.8rem;"><%= SecureRandom.uuid.upcase %></code></p>
+          <p style="margin-bottom: 0.2rem;">Certificado: <code style="background-color: #f8f9fa; padding: 0.1rem 0.3rem; border-radius: 0.2rem; font-size: 0.8rem;"><%= rand(10**20).to_s.rjust(20,'0') %></code></p>
+          <p style="margin-bottom: 0; word-break: break-all;">Sello: <code style="background-color: #f8f9fa; padding: 0.1rem 0.3rem; border-radius: 0.2rem; font-size: 0.8rem;"><%= SecureRandom.hex(32).upcase %></code></p>
         </div>
       </div>
     </div>
 
 
-    <div class="row mt-4">
-      <div class="col-12 text-center">
-        <p class="text-muted small">Este documento es una representación impresa de un CFDI y es válido como comprobante fiscal.</p>
+    <div style="display: flex; flex-wrap: wrap; margin-top: 1rem;">
+      <div style="width: 100%; text-align: center;">
+        <p style="color: #6c757d; font-size: 0.75rem; margin-bottom: 0;">Este documento es una representación impresa de un CFDI y es válido como comprobante fiscal.</p>
       </div>
     </div>
   </div>
+
   <% unless local_assigns[:pdf] %>
-  <div class="w-100 d-flex justify-content-end my-3 ">
+  <div style="width: 100%; display: flex; justify-content: flex-end; margin: 1rem 0;">
     <div>
-      <%= link_to '<i class="fa-solid fa-file-pdf"></i>'.html_safe, invoice_path(@invoice, format: :pdf), target: '_blank', class: "btn btn-primary me-2", id: "generate-template" %>
-      <%= link_to '<i class="fa-regular fa-file"></i>'.html_safe, invoice_path(@invoice, format: :xml), target: '_blank', class: "btn btn-primary me-2", id: "generate-template" %>
+      <%= link_to '<i class="fa-solid fa-file-pdf"></i> PDF'.html_safe,
+                  invoice_path(@invoice, format: :pdf),
+                  target: '_blank',
+                  style: "background-color: #1679AB; color: white; padding: 0.6rem 1.2rem; border-radius: 0.25rem; text-decoration: none; margin-right: 0.5rem; font-size: 0.95rem; display: inline-flex; align-items: center;" %>
+
+      <%= link_to '<i class="fa-regular fa-file"></i> XML'.html_safe,
+                  invoice_path(@invoice, format: :xml),
+                  target: '_blank',
+                  style: "background-color: #1679AB; color: white; padding: 0.6rem 1.2rem; border-radius: 0.25rem; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center;" %>
     </div>
   </div>
   <% end %>
