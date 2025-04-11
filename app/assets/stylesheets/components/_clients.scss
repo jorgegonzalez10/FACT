@@ -1,0 +1,29 @@
+#clientsContainer {
+  .client-card {
+    border-color: #1679AB;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(22, 121, 171, 0.2);
+    }
+
+    .card-title {
+      color: #0D1E40;
+    }
+  }
+}
+
+.clients-subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+  border-left: 4px solid #1679AB;
+  padding-left: 12px;
+  display: inline-block;
+  font-weight: 500;
+  background-color: #102C57;
+  border-radius: 4px;
+  padding: 6px 12px;
+}

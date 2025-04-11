@@ -1,25 +1,34 @@
-#companiesCard {
-  .company-card {
-    background-color: #ffffff;
-    transition: box-shadow 0.2s ease;
-    border: 1px solid #FFB1B1;
+.company-card {
+  border: 2px solid #1679AB;
+  transition: all 0.2s ease-in-out;
 
-    &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h5 {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .btn-outline-danger {
-      transition: background-color 0.2s ease, color 0.2s ease;
-
-      &:hover {
-        background-color: #dc3545;
-        color: white;
-      }
-    }
+  &:hover {
+    background-color: #f5fbff;
+    box-shadow: 0 4px 12px rgba(22, 121, 171, 0.2);
   }
+}
+
+.btn-primary-blue {
+  background-color: #1679AB;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: darken(#1679AB, 10%);
+    color: white;
+  }
+}
+
+.companies-subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+  border-left: 4px solid #1679AB;
+  padding-left: 12px;
+  display: inline-block;
+  font-weight: 500;
+  background-color: #102C57;
+  border-radius: 4px;
+  padding: 6px 12px;
 }
