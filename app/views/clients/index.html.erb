@@ -1,37 +1,39 @@
-<div class="container my-5" id="container">
+<div class="text-center mt-4">
+  <h2 class="plans-greeting">👋 Hola, <%= current_user.name %></h2>
+  <p class="clients-subtitle">Estos son tus clientes registrados</p>
+</div>
 
-  <div class="row mb-4">
-    <div class="col-md-8 d-flex justify-content-between">
+<div class="container my-5" id="clientsContainer">
 
-      <div class="input-group w-50">
-        <input type="text" class="form-control" placeholder="Buscar cliente" aria-label="Buscar cliente">
-        <button class="btn btn-outline-secondary" type="button">
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
-
-      <%= link_to '+ Agregar Cliente', new_client_path, class: 'btn btn-primary rounded-pill' %>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="input-group w-50">
+      <input type="text" class="form-control" placeholder="Buscar cliente" aria-label="Buscar cliente">
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
+
+    <%= link_to '+ Agregar Cliente', new_client_path, class: 'btn btn-primary-blue rounded-pill px-4 py-2' %>
   </div>
 
   <div class="row">
     <% @clients.each do |client| %>
       <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-0 rounded-4">
+        <div class="card client-card shadow-sm border border-2 rounded-4">
           <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <h5 class="card-title"><%= client.fiscal_name %></h5>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold mb-0"><%= client.fiscal_name %></h5>
               <%= link_to 'Editar', edit_client_path(client), class: "btn btn-outline-warning btn-sm" %>
             </div>
             <p class="card-text"><strong>RFC:</strong> <%= client.rfc %></p>
-            <p class="card-text"><strong>Nombre fiscal:</strong> <%= client.fiscal_number %></p>
-            <p class="card-text"><strong>Numero fiscal:</strong> <%= client.fiscal_number %></p>
-            <p class="card-text"><strong>Correo electronico:</strong> <%= client.email %></p>
-            <p class="card-text"><strong>Telefono:</strong> <%= client.phone %></p>
-            <%= link_to 'Remove',
-                    client_path(client),
-                    class: 'btn btn-outline-danger btn-sm ',
-                    data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+            <p class="card-text"><strong>Nombre fiscal:</strong> <%= client.fiscal_name %></p>
+            <p class="card-text"><strong>Número fiscal:</strong> <%= client.fiscal_number %></p>
+            <p class="card-text"><strong>Correo electrónico:</strong> <%= client.email %></p>
+            <p class="card-text"><strong>Teléfono:</strong> <%= client.phone %></p>
+            <%= link_to 'Eliminar',
+                        client_path(client),
+                        class: 'btn btn-outline-danger btn-sm mt-2',
+                        data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
           </div>
         </div>
       </div>

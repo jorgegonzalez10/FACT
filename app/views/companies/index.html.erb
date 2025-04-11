@@ -1,13 +1,21 @@
-
-<div class="container mt-5 ">
-  <%= link_to '+ Agregar compañía', new_company_path, class: 'btn btn-warning rounded-pill px-4 py-2 d-flex align-items-center' %>
+<div class="text-center mt-4">
+  <h2 class="plans-greeting">👋 Hola, <%= current_user.name %></h2>
+  <p class="companies-subtitle">Estas son tus compañías registradas</p>
 </div>
-<div class="container mt-4" id="companiesCard">
+
+<div class="container mb-4">
+  <div class="text-end">
+    <%= link_to '+ Agregar compañía', new_company_path,
+        class: 'btn btn-primary-blue rounded-pill px-4 py-2' %>
+  </div>
+</div>
+
+<div class="container" id="companiesCard">
   <ul class="list-group">
     <% @companies.each do |company| %>
-      <li class="list-group-item p-4 mb-2 shadow-sm company-card d-flex align-items-center rounded-4">
+      <li class="list-group-item p-4 mb-3 company-card d-flex align-items-center rounded-4">
         <% if company.photo.attached? %>
-          <%= image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
+          <%= cl_image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
         <% end %>
 
         <div class="flex-grow-1">
@@ -17,15 +25,15 @@
             <strong>CP:</strong> <%= company.postal %>
           </p>
         </div>
-        <%= link_to 'Ver detalles',
-                    company_path(company),
-                    class: 'btn btn-outline-warning btn-sm ms-3' %>
-        <%= link_to 'Remove',
-                    company_path(company),
-                    class: 'btn btn-outline-danger btn-sm ms-3',
-                    data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+
+        <div class="d-flex flex-column align-items-end ms-3">
+          <%= link_to 'Ver detalles', company_path(company),
+              class: 'btn btn-outline-primary btn-sm mb-2' %>
+          <%= link_to 'Eliminar', company_path(company),
+              class: 'btn btn-outline-danger btn-sm',
+              data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+        </div>
       </li>
     <% end %>
   </ul>
-
 </div>

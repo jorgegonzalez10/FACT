@@ -7,3 +7,6 @@ import "./faq"
 
 import "chartkick"
 import "Chart.bundle"
+import Swal from "sweetalert2"
+window.Swal = Swal
+

@@ -15,7 +15,8 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      redirect_to companies_path(@companies)
+      flash[:notice] = "¡Compañía creada exitosamente!"
+      redirect_to companies_path
     else
       render "new", status: :unprocessable_entity
     end

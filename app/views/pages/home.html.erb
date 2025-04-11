@@ -9,7 +9,7 @@
   </div>
 
   <div class="hero-image">
-    <%= image_tag("home-fact.png", alt: "FACT") %>
+    <%= image_tag("https://res.cloudinary.com/dvpkudizj/image/upload/v1744384392/home-fact_p0vi9y.png", alt: "FACT") %>
   </div>
 </div>
 
@@ -91,7 +91,7 @@
 </section>
 
 <!-- sección sobre nosotros -->
-<section class="about-section">
+<section class="features-section">
   <div class="about-container">
     <h2 class="about-title">¿Quiénes somos?</h2>
     <p class="about-description">
@@ -111,17 +111,17 @@
 
     <div class="team-grid">
       <div class="team-member">
-        <%= image_tag("OC.jpeg", alt: "Foto de Olivia Calderon") %>
+        <%= cl_image_tag("OC_zbqza7", alt: "Foto de Olivia Calderon") %>
         <p class="team-name">Olivia Calderon</p>
         <p class="team-role">Co-Founder</p>
       </div>
       <div class="team-member">
-        <%= image_tag("JG.jpeg", alt: "Foto de Jorge Gonzalez") %>
+        <%= cl_image_tag("JG_zvfizn", alt: "Foto de Jorge Gonzalez") %>
         <p class="team-name">Jorge Gonzalez</p>
         <p class="team-role">Co-Founder</p>
       </div>
       <div class="team-member">
-        <%= image_tag("RAT.jpeg", alt: "Foto de Rodrigo Alvarez de Toledo") %>
+        <%= cl_image_tag("RAT_tw0koc", alt: "Foto de Rodrigo Alvarez de Toledo") %>
         <p class="team-name">Rodrigo Alvarez de Toledo</p>
         <p class="team-role">Co-Founder</p>
       </div>
@@ -177,7 +177,7 @@
 <footer class="footer-innovador">
   <div class="footer-wrapper">
     <div class="footer-brand">
-      <%= image_tag("FACT-logo.png", class: "footer-logo", alt: "Logo") %>
+      <%= cl_image_tag("FACT-logo_s5vks9.png", class: "footer-logo", alt: "Logo") %>
       <p>Facturar nunca fue tan simple.</p>
     </div>
 
