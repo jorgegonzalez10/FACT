@@ -1,0 +1,8 @@
+*.md
+doc/
+spec/
+test/
+tmp/
+log/
+public/assets/
+coverage/
