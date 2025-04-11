@@ -15,7 +15,7 @@
     <% @companies.each do |company| %>
       <li class="list-group-item p-4 mb-3 company-card d-flex align-items-center rounded-4">
         <% if company.photo.attached? %>
-          <%= image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
+          <%= cl_image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
         <% end %>
 
         <div class="flex-grow-1">
