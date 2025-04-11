@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :clients
   resources :invoices do
     resources :detail_invoices, only: [:new, :create, :edit, :update, :destroy]
+    member do
+      post :send_pdf_to_user
+    end
   end
   # Defines the root path route ("/")
   # root "posts#index"
