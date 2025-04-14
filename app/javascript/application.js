@@ -3,10 +3,9 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-import "./faq"
+
 
 import "chartkick"
 import "Chart.bundle"
 import Swal from "sweetalert2"
 window.Swal = Swal
-
