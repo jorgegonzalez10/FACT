@@ -7,3 +7,4 @@ log/
 public/assets/
 coverage/
 yarn.lock
+node_modules
