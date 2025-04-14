@@ -79,3 +79,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+group :production do
+  gem 'wkhtmltopdf-heroku', '3.0.0'
+end
