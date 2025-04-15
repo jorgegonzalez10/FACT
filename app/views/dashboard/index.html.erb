@@ -1,42 +1,122 @@
-<div class="dashboard">
-  <div class="dashboard__charts">
-
-
-    <div class="dashboard__card">
-      <h2 class="dashboard__title">Facturas creadas por mes</h2>
-      <%= line_chart @invoices_by_month, height: '200px' %>
+<div class="container py-5">
+  <div class="row g-4">
+    <!-- Tarjetas resumen -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm rounded-4 text-center p-3">
+        <h6 class="text-muted">Total Clients</h6>
+        <h3 class="text-primary fw-bold"><%= @total_clients %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm rounded-4 text-center p-3">
+        <h6 class="text-muted">Total Companies</h6>
+        <h3 class="text-success fw-bold"><%= @total_companies %></h3>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm rounded-4 text-center p-3">
+        <h6 class="text-muted">Total Invoices</h6>
+        <h3 class="text-warning fw-bold"><%= @invoices.count %></h3>
+      </div>
     </div>
 
-    <div class="dashboard__card">
-      <h2 class="dashboard__title">Monto total facturado por mes</h2>
-      <%= column_chart @total_invoice_amount_by_month, height: '200px', prefix: "$" %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm rounded-4 text-center p-3">
+        <h6 class="text-muted">Monthly Avg</h6>
+        <% formatted_avg = number_with_precision(@monthly_avg || 0, precision: 2, delimiter: ",", separator: ".") %>
+        <h3 class="text-danger fw-bold">$<%= formatted_avg %></h3>
+
+      </div>
     </div>
 
-    
+  </div>
 
-    <div class="dashboard__card">
-      <h2 class="dashboard__title">Proporción de facturas por empresa</h2>
-      <%= pie_chart @invoices_by_company, height: '200px', colors: ["#1679AB", "#FFB1B1", "#0D2B57"] %>
+  <!-- Charts section -->
+  <div class="row g-4 mt-4">
+  <!-- Invoices per Month - Line Chart -->
+  <div class="col-lg-6">
+    <div class="card shadow-sm rounded-4 p-3">
+      <h6 class="chart-title">Invoices per Month</h6>
+      <%= line_chart @invoices_by_month,
+        height: '250px',
+        library: {
+          backgroundColor: 'transparent',
+          colors: ['#1679AB'],
+          lineWidth: 4,
+          curveType: 'function',
+          pointSize: 6,
+          animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'out'
+          },
+          hAxis: { title: 'Month', textStyle: { fontSize: 12 } },
+          vAxis: { title: 'Invoices', format: 'decimal', textStyle: { fontSize: 12 } },
+          legend: { position: 'none' },
+          tooltip: { textStyle: { fontSize: 14 } }
+        } %>
     </div>
   </div>
 
-  <div class="dashboard__totals">
-    <div class="dashboard__summary-card">
-      <h5>Total de Clientes</h5>
-      <p class="dashboard__summary-value"><%= @total_clients %></p>
-    </div>
-    <div class="dashboard__summary-card">
-      <h5>Total de Empresas</h5>
-      <p class="dashboard__summary-value"><%= @total_companies %></p>
+  <!-- Revenue per Month - Column Chart -->
+  <div class="col-lg-6">
+    <div class="card shadow-sm rounded-4 p-3">
+      <h6 class="chart-title">Revenue per Month</h6>
+      <%= column_chart @total_invoice_amount_by_month,
+        height: '250px',
+        prefix: '$',
+        thousands: ',',
+        decimal: '.',
+        library: {
+          backgroundColor: 'transparent',
+          colors: ['#FFB1B1'],
+          animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'out'
+          },
+          hAxis: { title: 'Month', textStyle: { fontSize: 12 } },
+          vAxis: { title: 'Revenue', format: 'currency', textStyle: { fontSize: 12 } },
+          bar: { groupWidth: '70%' },
+          legend: { position: 'none' },
+          tooltip: { textStyle: { fontSize: 14 } }
+        } %>
     </div>
   </div>
 
-  <div class="dashboard__latest">
-    <h2 class="dashboard__title">Últimos Clientes Registrados</h2>
-    <ul>
-      <% @ultimos_clientes.each do |cliente| %>
-        <li><strong><%= cliente.name %></strong> - <%= cliente.created_at.strftime("%B %d, %Y") %></li>
-      <% end %>
-    </ul>
+  <div class="col-lg-6">
+      <div class="card shadow-sm rounded-4 p-3">
+        <h6 class="chart-title">Clients vs Companies</h6>
+        <%= pie_chart @resumen_por_tipo, height: '200px', colors: ['#FFB1B1', '#1679AB'] %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm rounded-4 p-3">
+        <h6 class="chart-title">Invoices per Company</h6>
+        <%= pie_chart @invoices_by_company, height: '200px' %>
+      </div>
+    </div>
+</div>
+
+
+
+  <!-- Últimos clientes -->
+ <div class="row mt-5">
+  <div class="col-12">
+    <div class="card shadow-sm rounded-4 p-4">
+      <h6 class="chart-title mb-3">Latest Registered Clients</h6>
+      <ul class="list-group list-group-flush">
+        <% @ultimos_clientes.each do |cliente| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong><i class="bi bi-person-fill me-1"></i><%= cliente.fiscal_name %></strong>
+            </div>
+            <small class="text-muted"><%= cliente.created_at.strftime("%B %d, %Y") %></small>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+</div>
+
 </div>
