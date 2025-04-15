@@ -192,6 +192,22 @@ clients[half..].each { |client| client.update!(company: company2) }
 payment_types = ["PUE", "PPD"]
 payment_methods = ["03 - Transferencia electrónica", "01 - Efectivo", "04 - Tarjeta de crédito"]
 
+
+productos_por_compania = {
+  "Facturas del Norte S.A." => [
+    { producto: "Software de facturación", unidad: "paquete", descripcion: "Licencia anual del sistema de facturación electrónica" },
+    { producto: "Servicio de soporte técnico", unidad: "servicio", descripcion: "Soporte técnico remoto para resolución de incidencias" },
+    { producto: "Mantenimiento de servidores", unidad: "servicio", descripcion: "Mantenimiento mensual de infraestructura tecnológica" },
+    { producto: "Consultoría en digitalización", unidad: "servicio", descripcion: "Asesoría para migración digital de procesos administrativos" }
+  ],
+  "Grupo Contable del Sur" => [
+    { producto: "Declaración fiscal anual", unidad: "servicio", descripcion: "Preparación y presentación de la declaración fiscal anual" },
+    { producto: "Auditoría financiera", unidad: "servicio", descripcion: "Auditoría de estados financieros del ejercicio actual" },
+    { producto: "Asesoría contable mensual", unidad: "servicio", descripcion: "Gestión contable y análisis mensual de movimientos" },
+    { producto: "Cálculo de nómina", unidad: "proceso", descripcion: "Cálculo y emisión de nómina para empleados" }
+  ]
+}
+
 clients.each do |client|
   rand(2..5).times do
     created_at = rand(Date.new(2024, 10, 1)..Date.today).to_datetime
@@ -199,7 +215,7 @@ clients.each do |client|
     taxes = (sub_total * 0.16).round(2)
     total = (sub_total + taxes).round(2)
 
-    Invoice.create!(
+    invoice = Invoice.create!(
       company: client.company,
       client: client,
       payment_type: payment_types.sample,
@@ -207,6 +223,23 @@ clients.each do |client|
       sub_total: sub_total,
       taxes: taxes,
       total: total,
+      created_at: created_at,
+      updated_at: created_at
+    )
+
+    # Seleccionar un producto coherente con la compañía
+    productos = productos_por_compania[invoice.company.name]
+    producto = productos.sample
+
+    DetailInvoice.create!(
+      invoice: invoice,
+      product_number: "P#{rand(1000..9999)}",
+      amount: 1,
+      unit: producto[:unidad],
+      description: producto[:descripcion],
+      unit_value: sub_total,
+      total_value: sub_total,
+      taxes: taxes,
       created_at: created_at,
       updated_at: created_at
     )
