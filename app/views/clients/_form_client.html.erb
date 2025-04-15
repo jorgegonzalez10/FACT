@@ -1,6 +1,6 @@
 <div class="container mt-5 p-5 bg-white shadow rounded-4 border border-2" style="border-color: #1679AB;">
   <%= simple_form_for(@client) do |f| %>
-
+     <%= f.hidden_field :origin, value: origin if local_assigns[:origin]%>
     <h2 class="mb-4 text-primary fw-bold">Datos del Cliente</h2>
 
     <div class="row mb-3">
