@@ -1,4 +1,20 @@
 <!-- sección primer scroll -->
+<script>
+  document.addEventListener("turbo:load", () => {
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+
+    feather.replace();
+  });
+
+
+  feather.replace();
+</script>
+
 <div class="hero">
   <div class="welcome-section">
     <h1>Facturá en SAT en pocos pasos!</h1>
@@ -213,19 +229,3 @@
     <p>&copy; <%= Time.current.year %> FACT. Todos los derechos reservados.</p>
   </div>
 </footer>
-
-<script>
-  document.addEventListener("turbo:load", () => {
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        item.classList.toggle('active');
-      });
-    });
-
-    feather.replace();
-  });
-
-
-  feather.replace();
-</script>

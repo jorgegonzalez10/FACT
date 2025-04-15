@@ -1,0 +1,39 @@
+<div class="container mt-5 p-5 bg-white shadow rounded-4 border border-2" style="border-color: #1679AB;">
+  <%= simple_form_for(@client) do |f| %>
+
+    <h2 class="mb-4 text-primary fw-bold">Datos del Cliente</h2>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= f.input :fiscal_name, label: "Nombre o razón social", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :rfc, label: "RFC", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= f.input :fiscal_number, label: "Número fiscal", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :postal, label: "Código postal", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= f.input :phone, label: "Teléfono", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :email, label: "Correo electrónico", input_html: { class: 'form-control form-control-lg' } %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <%= f.submit 'Guardar Cliente', class: 'btn btn-primary w-50 rounded-pill py-2 fs-5' %>
+
+      <%= link_to raw('<i class="bi bi-arrow-return-left"></i> Volver a la lista'), clients_path, class: 'btn btn-outline-secondary w-45 rounded-pill py-2 fs-5' %>
+    </div>
+  <% end %>
+</div>
