@@ -34,9 +34,9 @@
                 <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
                 <td>$<%= number_with_precision(invoice.total, precision: 2) %></td>
                 <td>
-                  <%= link_to invoice_path(invoice) do %>
+                  <%= link_to invoice_path(invoice), class:"btn" do %>
                     <i class="fas fa-eye icono icono__blue"></i>
-                <% end %> |
+                <% end %>
                 <%= link_to invoice_path(invoice), data:{turbo_method: :delete, turbo_confirm: "Estas seguro que deseas borrar esta factura?"} do %>
                     <i class="fas fa-trash icono icono__red"></i>
                 <% end %>
