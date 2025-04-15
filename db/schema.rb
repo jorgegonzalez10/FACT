@@ -121,3 +121,61 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_220107) do
   add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "companies"
 end
+
+
+
+
+
+company1 = Company.create!(
+  name: "Facturas del Norte S.A.",
+  rfc: "FNRT920101AAA",
+  fiscal_number: 123456789,
+  postal: 12345,
+  certificate: "CERT123",
+  location: "Monterrey, NL",
+  time_date: Date.today,
+  user: user
+)
+
+company2 = Company.create!(
+  name: "Grupo Contable del Sur",
+  rfc: "GCSU950202BBB",
+  fiscal_number: 987654321,
+  postal: 54321,
+  certificate: "CERT456",
+  location: "Mérida, Yucatán",
+  time_date: Date.today,
+  user: user
+)
+
+# Distribuir los 15 clientes entre ambas compañías
+clients = Client.all.shuffle
+half = clients.size / 2
+
+clients[0...half].each { |client| client.update!(company: company1) }
+clients[half..].each { |client| client.update!(company: company2) }
+
+# Crear facturas aleatorias para cada cliente
+payment_types = ["PUE", "PPD"]
+payment_methods = ["03 - Transferencia electrónica", "01 - Efectivo", "04 - Tarjeta de crédito"]
+
+clients.each do |client|
+  rand(2..5).times do
+    created_at = rand(Date.new(2024, 10, 1)..Date.today).to_datetime
+    sub_total = rand(1000..10000)
+    taxes = (sub_total * 0.16).round(2)
+    total = (sub_total + taxes).round(2)
+
+    Invoice.create!(
+      company: client.company,
+      client: client,
+      payment_type: payment_types.sample,
+      payment_method: payment_methods.sample,
+      sub_total: sub_total,
+      taxes: taxes,
+      total: total,
+      created_at: created_at,
+      updated_at: created_at
+    )
+  end
+end
