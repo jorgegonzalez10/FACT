@@ -13,6 +13,8 @@
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+  background-color: #f4f4f4;
+  height: 40px;
 }
 
 .invoice-actions .btn {
@@ -27,6 +29,7 @@
 .btn-view {
   background-color: #102C57;
   color: white;
+  height: 40px;
 
   &:hover {
     background-color: darken(#102C57, 10%);
@@ -146,3 +149,17 @@
   color: #0D1E40;
   font-weight: 600;
 }
+
+.icono {
+  border: none;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.icono__red {
+color: red;
+}
+
+.icono__blue {
+  color: #102C57;
+  }

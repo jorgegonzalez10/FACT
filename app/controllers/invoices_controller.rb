@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   def index
-    @invoices = Invoice.all
+    @pagy, @invoices = pagy(Invoice.all)
   end
 
   def show

@@ -56,6 +56,7 @@ gem "sassc-rails"
 gem 'chartkick'
 gem 'groupdate'
 
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -83,3 +84,5 @@ end
 group :production do
   gem 'wkhtmltopdf-heroku', '3.0.0'
 end
+
+gem "pagy", "~> 9.3"
