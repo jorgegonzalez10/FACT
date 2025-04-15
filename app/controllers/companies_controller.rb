@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      if  params[:company][:origin] == 'invoice_modal'
+      if params[:company][:origin] == 'invoice_modal'
         redirect_to new_invoice_path
       else
         redirect_to companies_path
@@ -58,6 +58,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:origin, :name, :fiscal_number, :postal, :certificate, :location, :time, :photo,  :street, :number, :neighborhood, :city, :state, :zip_code)
+    params.require(:company).permit(:name, :fiscal_number, :postal, :certificate, :location, :date_time, :photo,  :street, :number, :neighborhood, :city, :state, :zip_code)
   end
 end

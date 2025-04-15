@@ -13,7 +13,11 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      redirect_to clients_path, notice: "Cliente guardado correctamente"
+      if params[:client][:origin] == 'invoice_modal_client'
+        redirect_to new_invoice_path
+      else
+        redirect_to clients_path, notice: "Cliente guardado correctamente"
+      end
     else
       render "new", status: :unprocessable_entity
     end
