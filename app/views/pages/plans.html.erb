@@ -4,7 +4,6 @@
     <p class="plans-subtitle">Elegí el plan que mejor se adapta a vos</p>
 
     <div class="row justify-content-center">
-      <!-- Plan Gratuito -->
       <div class="col-md-4">
         <div class="plan-card">
           <h3>Gratuito</h3>
@@ -14,11 +13,10 @@
             <li>Soporte por email</li>
             <li>Generación SAT manual</li>
           </ul>
-          <%= link_to "Comenzar", root_path, class: "btn plan-btn" %>
+          <%= link_to "Plan actual", root_path, class: "btn plan-btn" %>
         </div>
       </div>
 
-      <!-- Plan Pro -->
       <div class="col-md-4">
         <div class="plan-card recomendado">
           <div class="badge-recomendado">⭐ Recomendado</div>
@@ -29,11 +27,10 @@
             <li>Automatización SAT</li>
             <li>Soporte en vivo</li>
           </ul>
-          <%= link_to "Elegir Pro", root_path, class: "btn plan-btn" %>
+          <%= button_to "Elegir Pro", elegir_pro_path, method: :post, class: "btn plan-btn" %>
         </div>
       </div>
 
-      <!-- Plan Premium -->
       <div class="col-md-4">
         <div class="plan-card">
           <h3>Premium</h3>
@@ -43,15 +40,14 @@
             <li>Panel de equipo</li>
             <li>Soporte personalizado</li>
           </ul>
-          <%= link_to "Ir a Premium", root_path, class: "btn plan-btn" %>
+          <%= button_to "Ir a Premium", elegir_premium_path, method: :post, class: "btn plan-btn" %>
         </div>
       </div>
     </div>
 
-    <!-- Mensaje final -->
     <div class="contact-help">
       <p>¿No sabés qué plan elegir? Estamos para ayudarte. No dudes en escribirnos y te asesoramos sin compromiso.</p>
-      <%= link_to "Contactanos", "#contact", class: "btn contact-btn" %>
+      <%= link_to "Contáctanos", "#contact", class: "btn contact-btn" %>
     </div>
   </div>
 </section>
