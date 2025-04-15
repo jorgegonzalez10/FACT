@@ -43,6 +43,8 @@ class InvoicesController < ApplicationController
 
     @companies = Company.all
     @clients = Client.all
+    @company = Company.new
+    @client = Client.new
   end
 
   def create
