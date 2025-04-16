@@ -17,9 +17,9 @@
       <div class="col-md-4 mb-4">
         <div class="card text-center company-card shadow-sm p-3 rounded-4">
           <% if company.photo.attached? %>
-            <%= image_tag url_for(company.photo), class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
+            <%= cl_image_tag url_for(company.photo), class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
           <% else %>
-            <%= image_tag "default-avatar.png", class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
+            <%= cl_image_tag "https://res.cloudinary.com/dvpkudizj/image/upload/v1744385338/Profile_tkgjae.png", class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
           <% end %>
 
           <h5 class="card-title"><%= company.name %></h5>
