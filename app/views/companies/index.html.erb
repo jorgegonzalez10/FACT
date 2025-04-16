@@ -1,4 +1,3 @@
-
 <div class="text-center mt-4">
   <h2 class="plans-greeting">👋 Hola, <%= current_user.name %></h2>
   <p class="companies-subtitle">Estas son tus compañías registradas</p>
@@ -11,31 +10,61 @@
   </div>
 </div>
 
-<div class="container" id="companiesCard">
-  <ul class="list-group">
+<!-- CARDS DE COMPAÑÍAS -->
+<div class="container">
+  <div class="row">
     <% @companies.each do |company| %>
-      <li class="list-group-item p-4 mb-3 company-card d-flex align-items-center rounded-4">
-        <% if company.photo.attached? %>
-          <%= cl_image_tag url_for(company.photo), class: "rounded me-4", style: "width: 100px; height: 100px; object-fit: cover;", alt: company.name %>
-        <% end %>
+      <div class="col-md-4 mb-4">
+        <div class="card text-center company-card shadow-sm p-3 rounded-4">
+          <% if company.photo.attached? %>
+            <%= image_tag url_for(company.photo), class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
+          <% else %>
+            <%= image_tag "default-avatar.png", class: "rounded-circle mb-3 mx-auto d-block", style: "width: 100px; height: 100px; object-fit: cover;" %>
+          <% end %>
 
-        <div class="flex-grow-1">
-          <h3 class="mb-1"><%= company.name %></h3>
-          <p class="mb-0 text-muted">
-            <strong>RFC:</strong> <%= company.fiscal_number %> <br>
+          <h5 class="card-title"><%= company.name %></h5>
+          <p class="card-text text-muted">
+            <strong>RFC:</strong> <%= company.fiscal_number %><br>
             <strong>CP:</strong> <%= company.postal %>
           </p>
-        </div>
 
-        <div class="d-flex flex-column align-items-end ms-3">
-          <%= link_to 'Ver detalles', company_path(company),
-              class: 'btn btn-outline-primary btn-sm mb-2' %>
-          <%= link_to 'Eliminar', company_path(company),
-              class: 'btn btn-outline-danger btn-sm',
-              data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+          <div class="d-flex justify-content-center gap-2">
+            <%= link_to 'Ver detalles', company_path(company), class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Eliminar', company_path(company),
+                class: 'btn btn-outline-danger btn-sm',
+                data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } %>
+          </div>
         </div>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
 
+<!-- TABLA DE RESUMEN DE FACTURAS -->
+<div class="container mt-5">
+  <div class="d-flex justify-content-center mb-3" style="background-color: #102C57; border-radius: 4px; padding: 0.75rem 1.5rem;">
+    <h4 class="mb-0 text-white fw-bold"><%= t('.billing_summary', default: 'Resumen de facturación') %></h4>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center" style="border-color: #1679AB;">
+      <thead style="background-color: #1679AB; color: white;">
+        <tr>
+          <th scope="col">Compañía</th>
+          <th scope="col">Cantidad de facturas</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+          <tr>
+            <td><%= company.name %></td>
+            <td><%= company.invoices.count %></td>
+            <td>
+              <%= link_to t('.view_invoices', default: 'Ver facturas'), invoices_path(company_id: company.id), class: 'btn btn-sm btn-outline-primary rounded' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
